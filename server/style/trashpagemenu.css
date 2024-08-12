@@ -5,19 +5,21 @@ body {
 
 .sidebar {
     width: 201px;
-    background-color: #3B4E2D;
+    background-color: #667C3E;
     position: fixed;
     height: 100%;
     padding-top: 20px;
 }
 
-.sidebar h2 {
+.sidebar p {
     color: white;
-    text-align: center;
-    font-style: oblique;
+    text-align: left;
+    margin: 10px 0px 30px 20px;
+    font-family: 'Jomhuria', cursive;
+    font-size: 40px;
 }
 
-.sidebar a {
+.sidebar a {    
     padding: 10px 18px;
     text-decoration: none;
     font-size: 15px;
@@ -27,7 +29,7 @@ body {
 }
 
 .sidebar a:hover {
-    background-color: #577242;
+    background-color: #7F9973;
 }
 
 .sidebar img {
@@ -48,17 +50,26 @@ body {
     color: #7F9973;
 }
 
+.content p{
+    filter: blur(1px);
+    opacity: 0.5;
+    color: #667C3E;
+}
+
 .trash-icon img {
     width: 100px;
     height: 100px;
+    filter: blur(1px);
+    opacity: 0.5;
 }
 
 .footer {
     position: fixed;
     bottom: 10px;
-    left: 20px;
+    left: 12px;
     font-size: 12px;
-    color: white;
+    width: 13%;
+    color: #404D28;
     display: flex;
     align-items: center;
 }
@@ -77,11 +88,16 @@ body {
     display: flex;
     align-items: center;
     color: #667C3E;
-    
+    width: 100%; 
 }
 
 .footer .username-container img {
-    margin-right: 5px;
-    width: 24px;
-    height: 24px;
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.footer .username-container:hover{
+    background-color: #404D28;
+    color: white;
 }
