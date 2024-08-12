@@ -1,12 +1,87 @@
-.container{
-    background-color: white;
-    border: 2px solid black;
+body {
+    margin: 0;
+    font-family: arial, sans-serif;
 }
 
-.left{
-    border: 2px solid green;
+.sidebar {
+    width: 201px;
+    background-color: #667C3E;
+    position: fixed;
+    height: 100%;
+    padding-top: 20px;
 }
 
-.right{
-    border: 2px solid blue;
+.sidebar h2 {
+    color: white;
+    text-align: center;
+    font-style: oblique;
+}
+
+.sidebar a {    
+    padding: 10px 18px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a:hover {
+    background-color: #667C3E;
+}
+
+.sidebar img {
+    margin-right: 10px;
+    width: 25px;
+    height: 24px;
+}
+
+.content {
+    margin-left: 200px;
+    padding: 20px;
+    font-size: 18px;
+    background-color: #F5F5F5;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7F9973;
+}
+
+.trash-icon img {
+    width: 100px;
+    height: 100px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    font-size: 12px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.footer .username-container {
+    background-color: rgba(255, 255, 255, 1.0);
+    padding: 5px 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: #667C3E;
+    
+}
+
+.footer .username-container img {
+    margin-right: 5px;
+    width: 24px;
+    height: 24px;
 }
