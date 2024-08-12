@@ -25,7 +25,7 @@
         <div class="right">
             <div class="inner-right">
                 <p>Sign Up</p>
-                <form action="">
+                <form action="./server/php/signup.php" method="post">
                     <div class="form-group">
                         <div class="form-groupright">
                             <label for="fname">Firstname:</label>
