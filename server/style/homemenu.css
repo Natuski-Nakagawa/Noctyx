@@ -45,6 +45,7 @@ body {
     background-color: #F5F5F5;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: #7F9973;
