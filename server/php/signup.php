@@ -21,13 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     // Prepare and bind
     $stmt = $conn->prepare("INSERT INTO user (firstname, lastname, username, email, password) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $firstname, $lastname, $username, $email, $password);
+    $stmt->bind_param("sssss", $firstname, $lastname, $username, $email, $hashed_password);
 
     // Execute statement
     if ($stmt->execute()) {
-        echo "New record created successfully";
+        header("Location: /noctyx/client/pages/login.php");
+        exit();
     } else {
         echo "Error: " . $stmt->error;
     }
