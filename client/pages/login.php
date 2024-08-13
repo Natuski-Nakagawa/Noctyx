@@ -15,7 +15,7 @@
                     <p>Welcome!</p>
                 </div>
                 <div class="inner-left-mid">
-                    <form action="">
+                    <form action="../../server/php/tologin.php" method="post">
                         <div class="form-group">
                             <label for="uname">Username:</label>
                             <input type="text" id="uname" name="username" placeholder="Enter your username" required>
