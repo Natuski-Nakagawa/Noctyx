@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    overflow: hidden;
     font-family: arial, sans-serif;
 }
 
@@ -45,6 +46,7 @@ body {
     background-color: #F5F5F5;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: #7F9973;
@@ -54,6 +56,10 @@ body {
     filter: blur(1px);
     opacity: 0.5;
     color: #667C3E;
+    display: flex;
+    margin-top: -15px;
+    justify-content: center;
+    align-items: center;
 }
 
 .trash-icon img {
@@ -61,6 +67,9 @@ body {
     height: 100px;
     filter: blur(1px);
     opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer {
