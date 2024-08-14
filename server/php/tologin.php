@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->close();
             $conn->close();
             // Redirect to the welcome page or dashboard
-            header("Location: /noctyx/client/pages/home.php");
+            header("Location: /noctyx/client/pages/homepage.php");
             exit();
         } else {
             echo "Invalid password.";

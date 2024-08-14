@@ -27,15 +27,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sssss", $firstname, $lastname, $username, $email, $hashed_password);
 
     // Execute statement
-    if ($stmt->execute()) {
-        header("Location: /noctyx/client/pages/login.php");
+    $checkUserQuery = "SELECT * FROM user WHERE username='$username' OR email='$email'";
+    $result = $conn->query($checkUserQuery);
+
+    if ($result->num_rows > 0) {
+        // Username or email already exists
+        $error = "Username or Email already exists.";
+        header("Location: /noctyx/index.php?error=" . urlencode($error));
         exit();
     } else {
-        echo "Error: " . $stmt->error;
+        // Insert new user
+        $insertUserQuery = "INSERT INTO user (firstname, lastname, username, email, password) VALUES ('$firstname', '$lastname','$username', '$email', '$hashed_password')";
+        if ($conn->query($insertUserQuery) === TRUE) {
+            header("Location: /noctyx/client/pages/login.php");
+            exit();
+        } else {
+            // Handle query error
+            echo "Error: " . $conn->error;
+            header("Location: /noctyx/index.php?error=" . urlencode($error));
+            exit();
+        }
     }
-
-    // Close statement and connection
-    $stmt->close();
-    $conn->close();
 }
 ?>
