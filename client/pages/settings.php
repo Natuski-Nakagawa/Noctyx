@@ -10,11 +10,11 @@
 <body>
 <div class="sidebar">
         <p>Noctyx</p>
-        <a href="#home">
+        <a href="../pages/homepage.php">
             <img src="../assets/homeicon.png" alt="Home Icon"> <!-- Home icon -->
             Home
         </a>
-        <a href="http://localhost/Noctyx/client/pages/trashpagemenu.php">
+        <a href="../pages/trashpage.php">
             <img src="../assets/trashicon.png" alt="Trash Icon"> <!-- Trash icon -->
             Trash
         </a>
@@ -58,7 +58,11 @@
                 <input type="checkbox" id="enable-sharing" checked>
             </div>
         </div>
-        <div class="logout">Log out</div>
+
+        <div class="logout">
+        <a href="../pages/login.php">Log out</a>
+        </div>
+
         
     </div>
 </body>

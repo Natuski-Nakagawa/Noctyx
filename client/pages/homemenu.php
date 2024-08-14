@@ -14,11 +14,11 @@
             <img src="../assets/homeicon.png" alt="Home Icon">
             Home
         </a>
-        <a href="http://localhost/Noctyx/client/pages/trashpage.php">
+        <a href="../pages/trashpage.php">
             <img src="../assets/trashicon.png" alt="Trash Icon">
             Trash
         </a>
-        <a href="#settings">
+        <a href="../pages/settings.php">
             <img src="../assets/settingsicon.png" alt="Settings Icon">
             Settings
         </a>

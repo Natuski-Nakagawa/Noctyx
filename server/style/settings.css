@@ -129,11 +129,10 @@ body {
     margin-top: 220px;
     margin-right: 10px;
 }
-.logout img {
-    width: 5px; 
-    height: 5px; 
-}
 
+.logout a{
+    color:#A83232;
+}
 .logout:hover {
     text-decoration: underline;
 }
