@@ -6,8 +6,16 @@
     <title>Login</title>
     <link rel="stylesheet" href="../../server/style/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link href="../../server/style/overlay.css" rel="stylesheet">
 </head>
 <body>
+    <div id="overlay" class="overlay">
+        <div class="popup">
+            <div>Your account was created sucessfully!</div>
+            <button class="close-btn" onclick="hidePopup()">Close</button>
+        </div>
+    </div>
+
     <div class="container">
         <div class="left">
             <div class="inner-left">
@@ -52,5 +60,8 @@
             <img src="../assets/logo.png" alt="">
         </div>
     </div>
+
+    <script src="../../server/script/target.js">
+    </script>   `
 </body>
 </html>
