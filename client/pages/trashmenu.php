@@ -10,10 +10,15 @@
 <body>
     <div class="sidebar">
         <p>Noctyx</p>
-        <a href="http://localhost/Noctyx/client/pages/homepage.php">
+        <a href="../pages/homepage.php">
             <img src="../assets/homeicon.png" alt="Home Icon">
             Home
-            
+        </a>
+        <a href="../pages/trashpage.php" style="background-color: #404D28;">
+            <img src="../assets/trashicon.png" alt="Trash Icon">
+            Trash
+        </a>
+        <a href="../pages/settings.php">
             <img src="../assets/settingsicon.png" alt="Settings Icon">
             Settings
         </a>
