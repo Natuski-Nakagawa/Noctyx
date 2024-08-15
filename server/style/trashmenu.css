@@ -1,7 +1,8 @@
+/* Base Styles */
 body {
     margin: 0;
     overflow: hidden;
-    font-family: arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 .sidebar {
@@ -52,7 +53,7 @@ body {
     color: #7F9973;
 }
 
-.content p{
+.content p {
     filter: blur(1px);
     opacity: 0.5;
     color: #667C3E;
@@ -106,7 +107,63 @@ body {
     height: 25px;
 }
 
-.footer .username-container:hover{
+.footer .username-container:hover {
     background-color: #404D28;
     color: white;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark mode background */
+}
+
+body.dark-mode .sidebar {
+    background-color: #667C3E; /* Dark mode sidebar background */
+}
+
+body.dark-mode .sidebar p {
+    color: #e0e0e0; /* Dark mode text color for sidebar */
+}
+
+body.dark-mode .sidebar a {
+    color: #e0e0e0; /* Dark mode sidebar link color */
+}
+
+body.dark-mode .sidebar a:hover {
+    background-color: #444444; /* Dark mode hover color */
+}
+
+body.dark-mode .sidebar img {
+    filter: brightness(0.8); /* Dark mode sidebar icon brightness */
+}
+
+body.dark-mode .content {
+    background-color: #1e1e1e; /* Dark mode content background */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+body.dark-mode .content p {
+    color: #b0b0b0; /* Dark mode text color */
+}
+
+body.dark-mode .trash-icon img {
+    filter: none; /* No blur for trash icon in dark mode */
+    opacity: 1; /* Full opacity for trash icon in dark mode */
+}
+
+body.dark-mode .footer {
+    color: #b0b0b0; /* Dark mode footer color */
+}
+
+body.dark-mode .footer a {
+    color: #b0b0b0; /* Dark mode footer link color */
+}
+
+body.dark-mode .footer .username-container {
+    background-color: #333333; /* Dark mode footer container background */
+    color: #e0e0e0; /* Dark mode footer container text color */
+}
+
+body.dark-mode .footer .username-container:hover {
+    background-color: #444444; /* Dark mode footer container hover color */
 }

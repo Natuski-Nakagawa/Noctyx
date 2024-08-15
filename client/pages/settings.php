@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings Menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../server/style/settings.css" >
+    <link rel="stylesheet" href="../../server/style/settings.css">
 </head>
-<body>
-<div class="sidebar">
+<body class="<?php echo isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark' ? 'dark-mode' : ''; ?>">
+    <div class="sidebar">
         <p>Noctyx</p>
         <a href="../pages/homepage.php">
             <img src="../assets/homeicon.png" alt="Home Icon"> <!-- Home icon -->
@@ -60,10 +60,11 @@
         </div>
 
         <div class="logout">
-        <a href="../pages/login.php">Log out</a>
+            <a href="../pages/login.php">Log out</a>
         </div>
-
-        
     </div>
+
+    <!-- Include the JavaScript file -->
+    <script src="../../server/script/script.js" defer></script>
 </body>
 </html>

@@ -1,13 +1,16 @@
+/* Base Styles */
 body {
     display: flex;
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Light mode background */
+    color: #665b52; /* Light mode text color */
 }
 
 .sidebar {
     width: 201px;
-    background-color: #667C3E;
+    background-color: #667C3E; /* Light mode sidebar background */
     position: fixed;
     height: 100%;
     padding-top: 20px;
@@ -37,8 +40,9 @@ body {
 .sidebar img {
     margin-right: 10px;
     width: 25px;
-     height: 24px;
-}    
+    height: 24px;
+}
+
 .menu-item {
     width: 100%;
     padding: 6px 20px;
@@ -50,7 +54,6 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    
 }
 
 .menu-item:hover,
@@ -65,7 +68,7 @@ body {
 
 .content {
     flex-grow: 1;
-    background-color: #f5f5f5;
+    background-color: #f5f5f5; /* Light mode content background */
     padding: 20px;
 }
 
@@ -121,6 +124,7 @@ body {
     color: white;
     font-size: 14px;
 }
+
 .logout {
     color: #A83232;
     font-size: 20px;
@@ -130,9 +134,10 @@ body {
     margin-right: 10px;
 }
 
-.logout a{
-    color:#A83232;
+.logout a {
+    color: #A83232;
 }
+
 .logout:hover {
     text-decoration: underline;
 }
@@ -146,7 +151,6 @@ body {
     color: #404D28;
     display: flex;
     align-items: center;
-    color:#A83232;
 }
 
 .footer a {
@@ -172,7 +176,79 @@ body {
     height: 25px;
 }
 
-.footer .username-container:hover{
+.footer .username-container:hover {
     background-color: #404D28;
     color: white;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+body.dark-mode .sidebar {
+    background-color: #667C3E; /* Dark mode sidebar background */
+}
+
+body.dark-mode .sidebar a {
+    color: #ffffff; /* Dark mode link color */
+}
+
+body.dark-mode .sidebar a:hover {
+    background-color: #333333; /* Dark mode link hover color */
+}
+
+body.dark-mode .content {
+    background-color: #1e1e1e; /* Dark mode content background */
+}
+
+body.dark-mode .content h2 {
+    color: #66723b; /* Dark mode heading color */
+}
+
+body.dark-mode .settings-group h3 {
+    color: #e0e0e0; /* Dark mode section heading color */
+}
+
+body.dark-mode .settings-item label {
+    color: #e0e0e0; /* Dark mode label color */
+}
+
+body.dark-mode .menu-item {
+    color: #e0e0e0; /* Dark mode menu item color */
+}
+
+body.dark-mode .menu-item:hover,
+body.dark-mode .menu-item.active {
+    background-color: #333333; /* Dark mode menu item hover color */
+}
+
+body.dark-mode .settings-item input[type="checkbox"] {
+    border: 2px solid #333333;
+}
+
+body.dark-mode .settings-item input[type="checkbox"]:checked {
+    background-color: #333333;
+}
+
+body.dark-mode .logout {
+    color: #e74c3c; /* Dark mode logout color */
+}
+
+body.dark-mode .footer {
+    color: #b0b0b0; /* Dark mode footer color */
+}
+
+body.dark-mode .footer a {
+    color: #b0b0b0; /* Dark mode footer link color */
+}
+
+body.dark-mode .footer .username-container {
+    background-color: #333333; /* Dark mode footer container background */
+    color: #e0e0e0; /* Dark mode footer container text color */
+}
+
+body.dark-mode .footer .username-container:hover {
+    background-color: #404D28;
 }

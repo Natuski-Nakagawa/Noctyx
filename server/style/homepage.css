@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
     display: flex;
     height: 100vh;
@@ -7,13 +8,12 @@ body {
 }
 
 .sidebar {
-    background-color: #667C3E;
+    background-color: #667C3E; /* Light mode sidebar background */
     width: 160.5px;
     padding: 20px;
     display: flex;
     height: 100%;
     flex-direction: column;
-    
 }
 
 .top-bar {
@@ -22,7 +22,7 @@ body {
 }
 
 .search-container {
-    background-color: white;
+    background-color: white; /* Light mode search container background */
     border-radius: 30px;
     height: 6%;
     width: 110%;
@@ -87,7 +87,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    background-color: #f5f5f5;
+    background-color: #f5f5f5; /* Light mode content background */
     position: relative;
 }
 
@@ -123,14 +123,13 @@ body {
     cursor: pointer;
 }
 
-
 .footer {
     position: fixed;
     bottom: 10px;
     left: 12px;
     font-size: 12px;
     width: 13%;
-    color: #404D28;
+    color: #404D28; /* Light mode footer color */
     display: flex;
     align-items: center;
 }
@@ -144,13 +143,13 @@ body {
 }
 
 .footer .username-container {
-    background-color: rgba(255, 255, 255, 1.0);
+    background-color: rgba(255, 255, 255, 1.0); /* Light mode footer container background */
     padding: 5px 18px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     color: #667C3E;
-    width: 100%; 
+    width: 100%;
 }
 
 .footer .username-container img {
@@ -159,7 +158,76 @@ body {
     height: 25px;
 }
 
-.footer .username-container:hover{
+.footer .username-container:hover {
     background-color: #404D28;
     color: white;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark mode background */
+}
+
+body.dark-mode .sidebar {
+    background-color: #66723b; /* Dark mode sidebar background */
+}
+
+body.dark-mode .search-container {
+    background-color: #444444; /* Dark mode search container background */
+}
+
+body.dark-mode .menu-icon::before,
+body.dark-mode .menu-icon::after,
+body.dark-mode .menu-icon div {
+    background-color: #e0e0e0; /* Dark mode menu icon lines color */
+}
+
+body.dark-mode .search-input {
+    color: #e0e0e0;
+}
+
+body.dark-mode .content {
+    background-color: #1e1e1e; /* Dark mode content background */
+    color: #e0e0e0; /* Dark mode content text color */
+}
+
+body.dark-mode .trash-icon {
+    opacity: 1; /* Full opacity for trash icon in dark mode */
+}
+
+body.dark-mode .content p {
+    color: #b0b0b0; /* Dark mode paragraph color */
+}
+
+body.dark-mode .add-button {
+    background-color: #667C3E; /* Dark mode add button background */
+    color: #e0e0e0; /* Dark mode add button text color */
+}
+
+body.dark-mode .footer {
+    color: #b0b0b0; /* Dark mode footer color */
+}
+
+body.dark-mode .footer a {
+    color: #b0b0b0; /* Dark mode footer link color */
+}
+
+body.dark-mode .footer .username-container {
+    background-color: #333333; /* Dark mode footer container background */
+    color: #e0e0e0; /* Dark mode footer container text color */
+}
+
+body.dark-mode .footer .username-container:hover {
+    background-color: #404D28; /* Dark mode footer container hover color */
+}
+
+/* Note Styles */
+.note {
+    background-color: #66723b; /* Note background color */
+    color: white; /* Note text color */
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

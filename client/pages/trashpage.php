@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trash</title>
     <link rel="stylesheet" href="../../server/style/trashpage.css" >
+    <script src="../../server/script/script.js" defer></script> <!-- Include the script.js script -->
 </head>
-<body>
+<body class="<?php echo isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark' ? 'dark-mode' : ''; ?>">
 <div class="sidebar">
     <div class="search-container">
         <a href="../pages/trashmenu.php" class="menu-link">

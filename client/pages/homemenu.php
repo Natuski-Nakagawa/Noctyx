@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Menu</title>
-    <link rel="stylesheet" href="../../server/style/homemenu.css" >
+    <link rel="stylesheet" href="../../server/style/homemenu.css">
     <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <script src="../../server/script/script.js" defer></script> <!-- Include the script.js script -->
+    
 </head>
-<body>
+<body class="<?php echo isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark' ? 'dark-mode' : ''; ?>">
     <div class="sidebar">
         <p>Noctyx</p>
-        <a href="../pages/homepage.php"  style="background-color: #404D28;">
+        <a href="../pages/homepage.php" style="background-color: #404D28;">
             <img src="../assets/homeicon.png" alt="Home Icon">
             Home
         </a>

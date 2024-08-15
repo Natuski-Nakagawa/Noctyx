@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
     display: flex;
     height: 100vh;
@@ -7,13 +8,12 @@ body {
 }
 
 .sidebar {
-    background-color: #667C3E;
+    background-color: #667C3E; /* Light mode sidebar background */
     width: 160.5px;
     padding: 20px;
     display: flex;
     height: 100%;
     flex-direction: column;
-    
 }
 
 .top-bar {
@@ -87,7 +87,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    background-color: #f5f5f5;
+    background-color: #f5f5f5; /* Light mode content background */
     position: relative;
 }
 
@@ -109,14 +109,13 @@ body {
     align-items: center;
 }
 
-
 .footer {
     position: fixed;
     bottom: 10px;
     left: 12px;
     font-size: 12px;
     width: 13%;
-    color: #404D28;
+    color: #404D28; /* Light mode footer color */
     display: flex;
     align-items: center;
 }
@@ -130,13 +129,13 @@ body {
 }
 
 .footer .username-container {
-    background-color: rgba(255, 255, 255, 1.0);
+    background-color: rgba(255, 255, 255, 1.0); /* Light mode footer container background */
     padding: 5px 18px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     color: #667C3E;
-    width: 100%; 
+    width: 100%;
 }
 
 .footer .username-container img {
@@ -145,7 +144,71 @@ body {
     height: 25px;
 }
 
-.footer .username-container:hover{
-    background-color: #404D28;
+.footer .username-container:hover {
+    background-color: #404D28; /* Light mode footer container hover color */
     color: white;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+body.dark-mode .sidebar {
+    background-color: #667C3E; /* Dark mode sidebar background */
+}
+
+body.dark-mode .sidebar p {
+    color: #e0e0e0; /* Dark mode text color for sidebar */
+}
+
+body.dark-mode .sidebar a {
+    color: #e0e0e0; /* Dark mode sidebar link color */
+}
+
+body.dark-mode .sidebar a:hover {
+    background-color: #444444; /* Dark mode hover color */
+}
+
+body.dark-mode .sidebar img {
+    filter: brightness(0.8); /* Dark mode sidebar icon brightness */
+}
+
+body.dark-mode .search-container {
+    background-color: #444444; /* Dark mode search container background */
+}
+
+body.dark-mode .search-input {
+    color: #e0e0e0; /* Dark mode input text color */
+}
+
+body.dark-mode .content {
+    background-color: #1e1e1e; /* Dark mode content background */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+body.dark-mode .trash-icon {
+    opacity: 1; /* Full opacity for trash icon in dark mode */
+}
+
+body.dark-mode .content p {
+    color: #b0b0b0; /* Dark mode text color */
+}
+
+body.dark-mode .footer {
+    color: #b0b0b0; /* Dark mode footer color */
+}
+
+body.dark-mode .footer a {
+    color: #b0b0b0; /* Dark mode footer link color */
+}
+
+body.dark-mode .footer .username-container {
+    background-color: #333333; /* Dark mode footer container background */
+    color: #e0e0e0; /* Dark mode footer container text color */
+}
+
+body.dark-mode .footer .username-container:hover {
+    background-color: #444444; /* Dark mode footer container hover color */
 }
