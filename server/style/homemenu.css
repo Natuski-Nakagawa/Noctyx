@@ -1,11 +1,12 @@
+/* Base Styles */
 body {
     margin: 0;
-    font-family: arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 .sidebar {
     width: 201px;
-    background-color: #667C3E;
+    background-color: #667C3E; /* Light mode sidebar background */
     position: fixed;
     height: 100%;
     padding-top: 20px;
@@ -29,7 +30,7 @@ body {
 }
 
 .sidebar a:hover {
-    background-color: #7F9973;
+    background-color: #7F9973; /* Light mode hover color */
 }
 
 .sidebar img {
@@ -42,7 +43,7 @@ body {
     margin-left: 200px;
     padding: 20px;
     font-size: 18px;
-    background-color: #F5F5F5;
+    background-color: #F5F5F5; /* Light mode content background */
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -51,10 +52,10 @@ body {
     color: #7F9973;
 }
 
-.content p{
+.content p {
     filter: blur(1px);
     opacity: 0.5;
-    color: #667C3E;
+    color: #667C3E; /* Light mode text color */
 }
 
 .notes-icon img {
@@ -70,7 +71,7 @@ body {
     left: 12px;
     font-size: 12px;
     width: 13%;
-    color: #404D28;
+    color: #404D28; /* Light mode footer color */
     display: flex;
     align-items: center;
 }
@@ -83,7 +84,7 @@ body {
 }
 
 .footer .username-container {
-    background-color: rgba(255, 255, 255, 1.0);
+    background-color: rgba(255, 255, 255, 1.0); /* Light mode footer container background */
     padding: 5px 18px;
     border-radius: 10px;
     display: flex;
@@ -98,7 +99,59 @@ body {
     height: 25px;
 }
 
-.footer .username-container:hover{
-    background-color: #404D28;
+.footer .username-container:hover {
+    background-color: #404D28; /* Light mode footer container hover color */
     color: white;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark mode background */
+}
+
+body.dark-mode .sidebar {
+    background-color: #667C3E; /* Dark mode sidebar background */
+}
+
+body.dark-mode .sidebar a {
+    color: #e0e0e0; /* Dark mode sidebar link color */
+}
+
+body.dark-mode .sidebar a:hover {
+    background-color: #444444; /* Dark mode hover color */
+}
+
+body.dark-mode .sidebar img {
+    filter: brightness(0.8); /* Dark mode sidebar icon brightness */
+}
+
+body.dark-mode .content {
+    background-color: #1e1e1e; /* Dark mode content background */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+body.dark-mode .content p {
+    color: #b0b0b0; /* Dark mode text color */
+}
+
+body.dark-mode .notes-icon img {
+    filter: none; /* No blur for notes icon in dark mode */
+    opacity: 1; /* Full opacity for notes icon in dark mode */
+}
+
+body.dark-mode .footer {
+    color: #b0b0b0; /* Dark mode footer color */
+}
+
+body.dark-mode .footer a {
+    color: #b0b0b0; /* Dark mode footer link color */
+}
+
+body.dark-mode .footer .username-container {
+    background-color: #333333; /* Dark mode footer container background */
+    color: #e0e0e0; /* Dark mode footer container text color */
+}
+
+body.dark-mode .footer .username-container:hover {
+    background-color: #444444; /* Dark mode footer container hover color */
 }
