@@ -1,4 +1,4 @@
-<?php
+<?php 
 // Database configuration
 $servername = "localhost"; // or your database server address
 $username = "root"; // your database username
@@ -39,7 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Insert new user
         $insertUserQuery = "INSERT INTO user (firstname, lastname, username, email, password) VALUES ('$firstname', '$lastname','$username', '$email', '$hashed_password')";
         if ($conn->query($insertUserQuery) === TRUE) {
-            header("Location: /noctyx/client/pages/login.php");
+            $success = "sign_up_success";
+            header("Location: /noctyx/client/pages/login.php?sign_up_success=" . urlencode($success));
             exit();
         } else {
             // Handle query error

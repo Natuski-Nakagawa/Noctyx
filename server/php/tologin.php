@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_username = $_POST['username'];
     $input_password = $_POST['password'];
 
-    echo "Entered Password: " . $input_password . "<br>";
 
     // Prepare a SQL statement to prevent SQL injection
     $stmt = $conn->prepare("SELECT user_id, username, password FROM user WHERE username = ?");
@@ -31,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_result($user_id, $username, $hashed_password);
         $stmt->fetch();
 
-        echo "Stored Hashed Password: " . $hashed_password . "<br>";
 
         // Verify password
         if (password_verify($input_password, $hashed_password)) {
@@ -43,9 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: /noctyx/client/pages/homepage.php");
             exit();
         } else {
+            $error = "Incorrect username or password.";
+            header("Location: /noctyx/client/pages/login.php?error=" . urlencode($error));
             echo "Invalid password.";
         }
     } else {
+        $error = "No user found with that username.";
+        header("Location: /noctyx/client/pages/login.php?error=" . urlencode($error));
         echo "No user found with that username.";
     }
 

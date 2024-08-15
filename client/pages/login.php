@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,12 +9,6 @@
     <link href="../../server/style/overlay.css" rel="stylesheet">
 </head>
 <body>
-    <div id="overlay" class="overlay">
-        <div class="popup">
-            <div>Your account was created sucessfully!</div>
-            <button class="close-btn" onclick="hidePopup()">Close</button>
-        </div>
-    </div>
 
     <div class="container">
         <div class="left">
@@ -61,7 +55,22 @@
         </div>
     </div>
 
-    <script src="../../server/script/target.js">
-    </script>   `
+    <div id="overlay" class="overlay">
+    <div class="popup">
+        <div class="popup-bg"></div>
+            <p id="errorMessage">Sign-up was successful! You can now log in.</p>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay">
+    <div class="popup">
+        <div class="popup-bg"></div>
+        <p id="errorMessage">Error message here</p>
+    </div>
+    </div>
+
+    <script src="../../server/script/notif.js">
+        
+    </script>  `
 </body>
 </html>

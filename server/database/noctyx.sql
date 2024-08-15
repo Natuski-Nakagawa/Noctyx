@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2024 at 11:05 AM
+-- Generation Time: Aug 15, 2024 at 05:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,13 +42,24 @@ CREATE TABLE `notes` (
 --
 
 CREATE TABLE `user` (
-  `user id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(12) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `username`, `email`, `password`) VALUES
+(6, 'Euro', 'Boss', 'euroboya', 'jerrualen@gmail.com', '$2y$10$SZCkIF5Ol7quAXZPSyN3P.ws902/Iyfo3ep/ag9WtWYKSkSfyMIMa'),
+(7, 'Ronald', 'Kupal', 'kupalako', 'ronald@gmail.com', '$2y$10$W5.kPQjec9hT/t5rVHxMWujW1PaujnxOQ/Dg3M3cOcltV1LuHxT8i'),
+(8, 'Mariane', 'Rilles', 'mriane', 'mariane@gmail.com', '$2y$10$4iZfyNtniUtfyLDIVmwyPeId43ismrSoIRz5XLRkeSMqh9klfGMZG'),
+(12, 'kahit', 'ano', 'nalang', 'kahitanonalang@gmail.com', '$2y$10$F42CjiHmbceP3vsQMt0iz.C6wh36S4CZpDzewaauDNDyDbyulfeUu'),
+(60, 'kunwari', 'testing', 'tignanmo', 'emerut@gmail.com', '$2y$10$j8Kd9FCBi/n9H5rffrMUvuI9SIKiZjQ5V9ZusssvM0AEiBuTCPnWe');
 
 --
 -- Indexes for dumped tables
@@ -58,7 +69,9 @@ CREATE TABLE `user` (
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -68,7 +81,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
