@@ -11,6 +11,7 @@ body {
     position: fixed;
     height: 100%;
     padding-top: 20px;
+    border-right: 1px solid white;
 }
 
 .sidebar p {
@@ -115,14 +116,15 @@ body {
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #121212; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text color */
 }
 
 body.dark-mode .sidebar {
-    background-color: #667C3E; /* Dark mode sidebar background */
+    background-color: #1e1e1e; /* Dark mode sidebar background */
 }
 
 body.dark-mode .sidebar p {
-    color: #e0e0e0; /* Dark mode text color for sidebar */
+    color: #66723b; /* Dark mode text color for sidebar */
 }
 
 body.dark-mode .sidebar a {
@@ -165,5 +167,55 @@ body.dark-mode .footer .username-container {
 }
 
 body.dark-mode .footer .username-container:hover {
-    background-color: #444444; /* Dark mode footer container hover color */
+    background-color: #ffffff; /* Dark mode footer container hover color */
+}
+
+
+
+
+/* Responsive Styles */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .sidebar {
+        width: 180px;
+        padding-top: 15px;
+    }
+
+    .sidebar p {
+        font-size: 36px;
+        margin: 10px 0px 20px 15px;
+    }
+
+    .sidebar a {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .sidebar img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .content {
+        margin-left: 180px;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+
+    .trash-icon img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .footer {
+        width: 10%;
+        font-size: 14px;
+        bottom: 5px;
+    } 
+    .footer .username-container {
+        width: 130%;
+    }
 }
