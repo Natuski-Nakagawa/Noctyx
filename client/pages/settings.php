@@ -10,11 +10,11 @@
 <body class="<?php echo isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark' ? 'dark-mode' : ''; ?>">
     <div class="sidebar">
         <p>Noctyx</p>
-        <a href="../pages/homepage.php">
+        <a href="../pages/homemenu.php">
             <img src="../assets/homeicon.png" alt="Home Icon"> <!-- Home icon -->
             Home
         </a>
-        <a href="../pages/trashpage.php">
+        <a href="../pages/trashmenu.php">
             <img src="../assets/trashicon.png" alt="Trash Icon"> <!-- Trash icon -->
             Trash
         </a>
