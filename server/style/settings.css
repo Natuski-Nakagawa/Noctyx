@@ -14,6 +14,7 @@ body {
     position: fixed;
     height: 100%;
     padding-top: 20px;
+    border-right: 1px solid white;
 }
 
 .sidebar p {
@@ -177,7 +178,7 @@ body {
 }
 
 .footer .username-container:hover {
-    background-color: #404D28;
+    background-color:#404D28; 
     color: white;
 }
 
@@ -188,9 +189,12 @@ body.dark-mode {
 }
 
 body.dark-mode .sidebar {
-    background-color: #667C3E; /* Dark mode sidebar background */
+    background-color: #1e1e1e; /* Dark mode sidebar background */
 }
+body.dark-mode .sidebar p {
+    color: #66723b;
 
+}
 body.dark-mode .sidebar a {
     color: #ffffff; /* Dark mode link color */
 }
@@ -208,7 +212,7 @@ body.dark-mode .content h2 {
 }
 
 body.dark-mode .settings-group h3 {
-    color: #e0e0e0; /* Dark mode section heading color */
+    color: #667C3E; /* Dark mode section heading color */
 }
 
 body.dark-mode .settings-item label {
@@ -233,7 +237,7 @@ body.dark-mode .settings-item input[type="checkbox"]:checked {
 }
 
 body.dark-mode .logout {
-    color: #e74c3c; /* Dark mode logout color */
+    color: #ffffff; /* Dark mode logout color */
 }
 
 body.dark-mode .footer {
@@ -250,5 +254,61 @@ body.dark-mode .footer .username-container {
 }
 
 body.dark-mode .footer .username-container:hover {
-    background-color: #404D28;
+    background-color: #ffffff;
+}
+
+
+
+/* Responsive Styles */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .sidebar {
+        width: 180px;
+        padding-top: 15px;
+    }
+
+    .sidebar p {
+        font-size: 36px;
+        margin: 10px 0px 20px 15px;
+    }
+
+    .sidebar a {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .menu-item {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .content h2 {
+        margin-left: 28%;
+        font-size: 28px;
+    }
+
+    .settings-group {
+        margin-left: 35%;
+    }
+
+    .settings-group h3 {
+        font-size: 18px;
+    }
+
+    .logout {
+        font-size: 18px;
+        margin-top: 180px;
+    }
+
+    .footer {
+        width: 10%;
+        font-size: 14px;
+        bottom: 5px;
+    }
+    .footer .username-container {
+        width: 130%;
+    }
 }
