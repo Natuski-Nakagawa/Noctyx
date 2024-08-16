@@ -67,22 +67,35 @@ function checkNoNotes() {
 document.getElementById('saveNote').addEventListener('click', function() {
     const title = document.getElementById('noteTitle').value;
     const content = document.getElementById('noteContent').value;
+    const userId = 7;  // Replace this with the actual user_id
 
     if (title.trim() === '' || content.trim() === '') {
         alert('Title and content cannot be empty.');
         return;
     }
 
-    if (isEditing && editIndex !== null) {
-        const notes = document.getElementById('noteContainer').children;
-        const formattedContent = content.replace(/\n/g, '<br>');
-        notes[editIndex].querySelector('.note-content').innerHTML = `<strong>${title}</strong><br>${formattedContent}`;
-    } else {
-        createNoteElement(title, content);
-    }
+    // Send the data to the PHP script via AJAX
+    const data = new FormData();
+    data.append('title', title);
+    data.append('content', content);
+    data.append('user_id', userId);  // Add user_id to the form data
 
-    closeModal();
+    fetch('/noctyx/server/php/save-note.php', {
+        method: 'POST',
+        body: data
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data); // Handle the response from the PHP script
+        createNoteElement(title, content); // Add the note to the UI
+        closeModal();
+    })
+    .catch(error => {
+        console.error('Error saving note:', error);
+    });
 });
+
+
 
 window.onclick = function(event) {
     if (event.target == document.getElementById('noteModal')) {

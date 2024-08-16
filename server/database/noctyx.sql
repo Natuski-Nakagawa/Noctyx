@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2024 at 05:18 AM
+-- Generation Time: Aug 16, 2024 at 10:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `notes` (
-  `note id` int(255) NOT NULL,
-  `title` int(255) NOT NULL,
-  `date created` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `id` int(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `date` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
   `content` varchar(255) NOT NULL,
-  `id` int(255) NOT NULL
+  `user_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -66,6 +66,13 @@ INSERT INTO `user` (`user_id`, `firstname`, `lastname`, `username`, `email`, `pa
 --
 
 --
+-- Indexes for table `notes`
+--
+ALTER TABLE `notes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fkey` (`user_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -78,10 +85,26 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `notes`
+--
+ALTER TABLE `notes`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `notes`
+--
+ALTER TABLE `notes`
+  ADD CONSTRAINT `fkey` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
