@@ -10,6 +10,7 @@ body {
     position: fixed;
     height: 100%;
     padding-top: 20px;
+    border-right: 1px solid white;
 }
 
 .sidebar p {
@@ -257,12 +258,16 @@ body {
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #121212; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text color */
 }
 
 body.dark-mode .sidebar {
-    background-color: #667C3E; /* Dark mode sidebar background */
+    background-color: #1e1e1e; /* Dark mode sidebar background */
 }
+body.dark-mode .sidebar p {
+    color: #66723b;
 
+}
 body.dark-mode .sidebar a {
     color: #e0e0e0; /* Dark mode sidebar link color */
 }
@@ -303,5 +308,53 @@ body.dark-mode .footer .username-container {
 }
 
 body.dark-mode .footer .username-container:hover {
-    background-color: #444444; /* Dark mode footer container hover color */
+    background-color: #ffffff; /* Dark mode footer container hover color */
+}
+
+
+
+
+/* Responsive Styles for screens 601px to 1024px */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .sidebar {
+        width: 180px;
+        padding-top: 15px;
+    }
+
+    .sidebar p {
+        font-size: 30px;
+        margin: 10px 0px 20px 15px;
+    }
+
+    .sidebar a {
+        font-size: 14px;
+    }
+
+    .sidebar img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .content {
+        margin-left: 180px;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .notes-icon img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .footer {
+        width: 13%;
+        font-size: 14px;
+        bottom: 5px;
+        
+    }
+
+    .footer .username-container {
+        font-size: 14px;
+        width: 130%;
+    }
 }
