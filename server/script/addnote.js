@@ -13,7 +13,7 @@ function closeModal() {
     editIndex = null;
 }
 
-function createNoteElement(title, content) {
+function createNoteElement(id, title, content) {
     const note = document.createElement('div');
     note.className = 'note';
 
@@ -41,18 +41,36 @@ function createNoteElement(title, content) {
     noteIcons.appendChild(editIcon);
 
     const deleteIcon = document.createElement('img');
-    deleteIcon.src = '../assets/delete-icon.png'; 
+    deleteIcon.src = '../assets/delete-icon.png';
     deleteIcon.alt = 'Delete';
     deleteIcon.addEventListener('click', function() {
-        note.remove();
-        checkNoNotes();
+        // Send the data to the PHP script via AJAX for deletion
+        const data = new FormData();
+        data.append('id', id); // Send the note ID to the server
+
+        fetch('/noctyx/server/php/del-notes.php', {
+            method: 'POST',
+            body: data
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data); // Handle the response from the PHP script
+            if (data === 'Note deleted successfully') {
+                note.remove(); // Remove the note from the UI
+                checkNoNotes();
+            } else {
+                alert('Failed to delete the note.'); // Handle deletion failure
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting note:', error);
+        });
     });
     noteIcons.appendChild(deleteIcon);
 
     note.appendChild(noteIcons);
     document.getElementById('noteContainer').appendChild(note);
 }
-
 
 function checkNoNotes() {
     const noteContainer = document.getElementById('noteContainer');
@@ -78,6 +96,11 @@ document.getElementById('saveNote').addEventListener('click', function() {
     data.append('title', title);
     data.append('content', content);
 
+    // Append editIndex if in editing mode
+    if (isEditing) {
+        data.append('editIndex', editIndex);
+    }
+
     fetch('/noctyx/server/php/save-note.php', {
         method: 'POST',
         body: data
@@ -85,14 +108,21 @@ document.getElementById('saveNote').addEventListener('click', function() {
     .then(response => response.text())
     .then(data => {
         console.log(data); // Handle the response from the PHP script
-        createNoteElement(title, content); // Add the note to the UI
-        closeModal();
+        if (data === 'Note saved successfully') {
+            if (isEditing) {
+                document.getElementById('noteContainer').children[editIndex].querySelector('.note-content').innerHTML = `<strong>${title}</strong><br>${content.replace(/\n/g, '<br>')}`;
+            } else {
+                createNoteElement(null, title, content); // Add the note to the UI
+            }
+            closeModal();
+        } else {
+            alert(data); // Display error message
+        }
     })
     .catch(error => {
         console.error('Error saving note:', error);
     });
 });
-
 
 window.onclick = function(event) {
     if (event.target == document.getElementById('noteModal')) {
@@ -104,15 +134,18 @@ window.onclick = function(event) {
 document.addEventListener('DOMContentLoaded', function() {
     // Fetch notes when the page loads
     fetch('/noctyx/server/php/display-notes.php')
-        .then(response => response.json())
-        .then(notes => {
-            notes.forEach(note => {
-                createNoteElement(note.title, note.content);
-            });
+        .then(response => response.text())
+        .then(data => {
+            if (data.trim() !== '') {
+                const notes = data.split('\n').filter(note => note.trim() !== '');
+                notes.forEach(note => {
+                    const [id, title, content] = note.split('|');
+                    createNoteElement(id, title, content);
+                });
+            }
             checkNoNotes(); // Update "No notes" visibility
         })
         .catch(error => {
             console.error('Error fetching notes:', error);
         });
 });
-

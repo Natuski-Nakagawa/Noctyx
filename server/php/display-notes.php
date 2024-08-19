@@ -11,18 +11,15 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 // Prepare and execute SQL statement to fetch notes for the user
-$stmt = $conn->prepare("SELECT title, content FROM notes WHERE user_id = ?");
+$stmt = $conn->prepare("SELECT id, title, content FROM notes WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Fetch notes and output them as JSON
-$notes = array();
+// Fetch notes and output them in a pipe-separated format
 while ($row = $result->fetch_assoc()) {
-    $notes[] = $row;
+    echo $row['id'] . '|' . $row['title'] . '|' . $row['content'] . "\n";
 }
-
-echo json_encode($notes);
 
 $stmt->close();
 $conn->close();
