@@ -3,6 +3,8 @@ include "../database/dbcon.php";
 
 session_start(); // Start session for user session management
 
+$_SESSION['user_id'] = $user_id;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_username = $_POST['username'];
     $input_password = $_POST['password'];
