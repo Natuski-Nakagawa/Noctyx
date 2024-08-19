@@ -272,8 +272,9 @@ body.dark-mode .footer .username-container:hover {
     }
 
     .sidebar a {
-        padding: 8px 15px;
-        font-size: 14px;
+        padding: 9px 15px;
+        font-size: 15px;
+        margin-left: 0%;
     }
 
     .menu-item {
@@ -309,6 +310,107 @@ body.dark-mode .footer .username-container:hover {
         bottom: 5px;
     }
     .footer .username-container {
-        width: 130%;
+        width: 140%;
+      
     }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .sidebar {
+        width: 35%;
+        height: auto;
+        position: relative;
+    }
+
+    .sidebar p {
+        color: white;
+        text-align: left;
+        margin: 10px 0px 10px 10px;
+        font-family: 'Jomhuria', cursive;
+        font-size: 30px; /* Adjusted font size for mobile */
+    }
+
+    .sidebar a {    
+        padding: 8px 10px;
+        text-decoration: none;
+        font-size: 14px; /* Adjusted font size for mobile */
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+
+    .menu-item {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .content h2 {
+        margin-left: 0;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .settings-group {
+        margin-left: 0;
+    }
+
+    .settings-group h3 {
+        font-size: 18px;
+    }
+
+    .settings-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .settings-item label {
+        font-size: 14px;
+    }
+
+    .settings-item input[type="checkbox"] {
+        margin-top: 5px;
+    }
+
+    .logout {
+        font-size: 18px;
+        margin-top: 20px;
+        text-align: center;
+    
+    }
+
+    .footer {
+        width: 100%;
+        font-size: 12px;
+        bottom: 5px;
+        left: 0;
+        justify-content: center;
+    }
+
+    .footer .username-container {
+        width: auto;
+        margin: 0 auto;
+        padding: 11px 16px;
+    }
+
+    .footer .username-container {
+        margin-left: 4px;
+        width: 23%;
+        font-size: 11px;
+        padding: 6px 15px;
+       
+    }
+
+    .footer .username-container img {
+        margin-right: 6px;
+        margin-left: -5px;
+        width: 20px;
+        height: 20px; 
+
+    }
+
 }
