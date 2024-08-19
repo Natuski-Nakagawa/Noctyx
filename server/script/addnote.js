@@ -51,8 +51,8 @@ function createNoteElement(title, content) {
 
     note.appendChild(noteIcons);
     document.getElementById('noteContainer').appendChild(note);
-    checkNoNotes(); // Update "No notes" visibility
 }
+
 
 function checkNoNotes() {
     const noteContainer = document.getElementById('noteContainer');
@@ -67,7 +67,6 @@ function checkNoNotes() {
 document.getElementById('saveNote').addEventListener('click', function() {
     const title = document.getElementById('noteTitle').value;
     const content = document.getElementById('noteContent').value;
-    const userId = 7;  // Replace this with the actual user_id
 
     if (title.trim() === '' || content.trim() === '') {
         alert('Title and content cannot be empty.');
@@ -78,7 +77,6 @@ document.getElementById('saveNote').addEventListener('click', function() {
     const data = new FormData();
     data.append('title', title);
     data.append('content', content);
-    data.append('user_id', userId);  // Add user_id to the form data
 
     fetch('/noctyx/server/php/save-note.php', {
         method: 'POST',
@@ -96,7 +94,6 @@ document.getElementById('saveNote').addEventListener('click', function() {
 });
 
 
-
 window.onclick = function(event) {
     if (event.target == document.getElementById('noteModal')) {
         closeModal();
@@ -104,4 +101,18 @@ window.onclick = function(event) {
 };
 
 // Check if there are any notes on page load
-document.addEventListener('DOMContentLoaded', checkNoNotes);
+document.addEventListener('DOMContentLoaded', function() {
+    // Fetch notes when the page loads
+    fetch('/noctyx/server/php/display-notes.php')
+        .then(response => response.json())
+        .then(notes => {
+            notes.forEach(note => {
+                createNoteElement(note.title, note.content);
+            });
+            checkNoNotes(); // Update "No notes" visibility
+        })
+        .catch(error => {
+            console.error('Error fetching notes:', error);
+        });
+});
+
