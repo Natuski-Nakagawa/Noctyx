@@ -43,11 +43,11 @@
 }
 
 .btn-confirm:hover {
-    background-color: #a1312d; /* Red color for confirm button */
+    background-color: #b8332e; /* Red color for confirm button */
     color: white;
 }
 
 .btn-cancel:hover {
-    background-color: #34859e; /* Blue color for cancel button */
+    background-color: #1f95b9; /* Blue color for cancel button */
     color: white;
 }
