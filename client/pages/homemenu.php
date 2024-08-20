@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Menu</title>
     <link rel="stylesheet" href="../../server/style/homemenu.css">
+    <link rel="stylesheet" href="../../server/style/del-confirm.css">
+    <link href="../../server/style/overlay.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
     <script src="../../server/script/script.js" defer></script> <!-- Include the script.js script -->
 </head>
@@ -53,8 +55,26 @@
         </div>
         </div>
 
+        <!-- Confirmation Overlay -->
+        <div id="deleteConfirmationOverlay" class="deloverlay">
+            <div class="del-overlay-content">
+                <p>Are you sure you want to delete this note?</p>
+                <button id="confirmDelete" class="btn-confirm">Yes</button>
+                <button id="cancelDelete" class="btn-cancel">No</button>
+            </div>
+        </div>
     </div>
 
+    <!-- Overlay for Notifications -->
+    <div id="overlay" class="overlay">
+    <div class="popup">
+            <p id="errorMessage">Sign-up was successful! You can now log in.</p>
+        </div>
+    </div>
+
+
     <script src="../../server/script/addnote.js"></script>
+    <script src="../../server/script/notif.js"></script>
+    
 </body>
 </html>
