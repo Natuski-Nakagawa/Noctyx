@@ -86,6 +86,7 @@ body {
     background-color: #F5F5F5;
     height: calc(100vh); /* Adjust height to leave space for footer */
     position: relative;
+    border-left: 1px solid white;
 }
 
 .search-container {
@@ -319,7 +320,7 @@ body.dark-mode .footer .username-container:hover {
 
     .sidebar p {
         font-size: 36px;
-        margin: 10px 0px 20px 0px;
+        margin: 10px 0px 30px 0px;
 
     }
 
@@ -452,8 +453,8 @@ body.dark-mode .footer .username-container:hover {
 
     .sidebar p {
         color: white;
-        text-align: left;
-        margin: 10px 0px 10px 10px;
+        text-align: center;
+        margin: 10px 0px 30px 0px;
         font-family: 'Jomhuria', cursive;
         font-size: 30px; /* Adjusted font size for mobile */
     }
