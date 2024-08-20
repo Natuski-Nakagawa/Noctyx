@@ -101,23 +101,37 @@ function checkNoNotes() {
     }
 }
 
+function showCustomAlert(message) {
+    document.getElementById('customAlertMessage').textContent = message;
+    document.getElementById('customAlert').style.display = 'flex';
+}
+
+document.getElementById('customAlertClose').addEventListener('click', function() {
+    document.getElementById('customAlert').style.display = 'none';
+});
+
+// Example usage in the save note function
 document.getElementById('saveNote').addEventListener('click', function() {
+    console.log('Save button clicked'); // Debug line
+
     const title = document.getElementById('noteTitle').value;
     const content = document.getElementById('noteContent').value;
 
     if (title.trim() === '' || content.trim() === '') {
-        alert('Title and content cannot be empty.');
+        showCustomAlert('Title and content cannot be empty.');
         return;
     }
 
-    // Send the data to the PHP script via AJAX
+    // Debug the FormData object
     const data = new FormData();
     data.append('title', title);
     data.append('content', content);
-
-    // Append editIndex if in editing mode
     if (isEditing) {
         data.append('editIndex', editIndex);
+    }
+
+    for (let [key, value] of data.entries()) {
+        console.log(`${key}: ${value}`); // Debug line
     }
 
     fetch('/noctyx/server/php/save-note.php', {
@@ -126,7 +140,7 @@ document.getElementById('saveNote').addEventListener('click', function() {
     })
     .then(response => response.text())
     .then(data => {
-        console.log(data); // Handle the response from the PHP script
+        console.log('Server response:', data); // Debug line
         if (data === 'Note saved successfully') {
             if (isEditing) {
                 const noteElement = document.querySelector(`[data-id="${editIndex}"]`);
@@ -138,13 +152,16 @@ document.getElementById('saveNote').addEventListener('click', function() {
             }
             closeModal();
         } else {
-            alert(data); // Display error message
+            showCustomAlert(data); // Display error message
         }
     })
     .catch(error => {
         console.error('Error saving note:', error);
     });
 });
+
+
+
 
 window.onclick = function(event) {
     if (event.target == document.getElementById('noteModal')) {
