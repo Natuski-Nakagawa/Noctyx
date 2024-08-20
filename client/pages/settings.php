@@ -58,13 +58,16 @@
                 <input type="checkbox" id="enable-sharing" checked>
             </div>
         </div>
-
-        <div class="logout">
-            <a href="../pages/login.php">Log out</a>
-        </div>
+        <form action="../../server/php/logout.php">
+            <div class="logout">
+                <button type="submit">Log out</button>
+            </div>
+        </form>
     </div>
 
     <!-- Include the JavaScript file -->
     <script src="../../server/script/script.js" defer></script>
 </body>
 </html>
+
+
