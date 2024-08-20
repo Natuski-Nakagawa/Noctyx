@@ -44,28 +44,46 @@ function createNoteElement(id, title, content) {
     deleteIcon.src = '../assets/delete-icon.png';
     deleteIcon.alt = 'Delete';
     deleteIcon.addEventListener('click', function() {
-        // Send the data to the PHP script via AJAX for deletion
-        const data = new FormData();
-        data.append('id', id); // Send the note ID to the server
-
-        fetch('/noctyx/server/php/del-notes.php', {
-            method: 'POST',
-            body: data
-        })
-        .then(response => response.text())
-        .then(data => {
-            console.log(data); // Handle the response from the PHP script
-            if (data === 'Note deleted successfully') {
-                note.remove(); // Remove the note from the UI
-                checkNoNotes();
-            } else {
-                alert('Failed to delete the note.'); // Handle deletion failure
-            }
-        })
-        .catch(error => {
-            console.error('Error deleting note:', error);
-        });
+        // Show the confirmation overlay
+        const overlay = document.getElementById('deleteConfirmationOverlay');
+        overlay.style.display = 'flex';
+    
+        // Handle the confirmation button click
+        document.getElementById('confirmDelete').onclick = function() {
+            // Proceed with deletion
+            const data = new FormData();
+            data.append('id', id); // Send the note ID to the server
+    
+            fetch('/noctyx/server/php/del-notes.php', {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data); // Handle the response from the PHP script
+                if (data === 'Note deleted successfully') {
+                    note.remove(); // Remove the note from the UI
+                    checkNoNotes();
+                } else {
+                    alert('Failed to delete the note.'); // Handle deletion failure
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting note:', error);
+            });
+    
+            // Hide the overlay after deletion
+            overlay.style.display = 'none';
+        };
+    
+        // Handle the cancel button click
+        document.getElementById('cancelDelete').onclick = function() {
+            // Hide the overlay without deleting the note
+            overlay.style.display = 'none';
+        };
     });
+    
+
     noteIcons.appendChild(deleteIcon);
 
     note.appendChild(noteIcons);

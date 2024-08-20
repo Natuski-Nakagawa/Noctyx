@@ -1,0 +1,53 @@
+/* Overlay */
+.deloverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.247); /* Semi-transparent background */
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Overlay content */
+.del-overlay-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Buttons */
+.btn-confirm, .btn-cancel {
+    padding: 3% 10%;
+    margin: 10px;
+    width: 30%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-confirm {
+    background-color: #d9534f; /* Red color for confirm button */
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #5bc0de; /* Blue color for cancel button */
+    color: white;
+}
+
+.btn-confirm:hover {
+    background-color: #a1312d; /* Red color for confirm button */
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #34859e; /* Blue color for cancel button */
+    color: white;
+}
