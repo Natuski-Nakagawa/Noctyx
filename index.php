@@ -66,7 +66,6 @@
     </div>    
     <div id="overlay" class="overlay">
     <div class="popup">
-        <div class="popup-bg"></div>
             <p id="errorMessage">Sign-up was successful! You can now log in.</p>
         </div>
     </div>
