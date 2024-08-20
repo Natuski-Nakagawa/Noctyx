@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 20, 2024 at 05:22 AM
+-- Generation Time: Aug 20, 2024 at 09:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `notes` (
   `id` int(255) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `date` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `ndate` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
   `content` varchar(255) NOT NULL,
   `user_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,12 +39,14 @@ CREATE TABLE `notes` (
 -- Dumping data for table `notes`
 --
 
-INSERT INTO `notes` (`id`, `title`, `date`, `content`, `user_id`) VALUES
+INSERT INTO `notes` (`id`, `title`, `ndate`, `content`, `user_id`) VALUES
 (48, 'adf', '2024-08-20 01:59:52.023791', 'fdsafd', 7),
 (51, 'edit done', '2024-08-20 02:15:33.527674', 'tapos ko na edit na to. talaga', 7),
 (52, 'Notes ni Euroboyassir', '2024-08-20 02:14:58.476861', 'wargh awrgh wawrghesf', 7),
-(53, 'geng geng', '2024-08-20 02:39:56.093803', 'pow pow pow', 6),
-(55, 'adfdf', '2024-08-20 02:48:32.205460', 'fdfafsfd', 6);
+(53, 'fqa', '2024-08-20 06:08:54.216168', '7474777l,onjimkmmk', 6),
+(62, 'ghjghjghj', '2024-08-20 03:45:12.646033', 'ghjghjgjghjghjghjghjghjghjgjghjghj', 6),
+(63, 'jkjhkhjl', '2024-08-20 03:45:27.046562', 'bhjghkgjkhjkhjkhjk', 6),
+(64, 'hjkhjkhjkhjkhjk', '2024-08-20 07:05:59.861054', 'hjkhjkhjkhjkhahahahahah', 6);
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `user`
