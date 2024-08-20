@@ -35,24 +35,23 @@
         <div class="search-container">
             <input type="text" class="search-input" placeholder="Search your notes">
         </div>
-
-            <div id="noNotes" class="no-notes">
-                <img src="../assets/no-notes.png" alt="No Notes Icon">
-                <p>No notes</p>
-            </div>
+        
+                <div id="noNotes" class="no-notes">
+                    <img src="../assets/no-notes.png" alt="No Notes Icon">
+                    <p>No notes</p>
+                </div>
 
         <button class="add-button" onclick="openModal()">+</button>
 
         <div id="noteContainer">
-        <div id="noteModal">
-            <div class="modal-content">
-                <input type="text" id="noteTitle" placeholder="Title">
-                <textarea id="noteContent" placeholder="Take a note..."></textarea>
+            <div id="noteModal">
+                <div class="modal-content">
+                    <input type="text" id="noteTitle" placeholder="Title">
+                    <textarea id="noteContent" placeholder="Take a note..."></textarea>
                 <button id="saveNote"><b>Save</b></button>
+                </div>
             </div>
         </div>
-        </div>
-
     </div>
 
     <script src="../../server/script/addnote.js"></script>

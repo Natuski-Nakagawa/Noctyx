@@ -84,7 +84,7 @@ body {
     margin-left: 200px;
     padding: 20px;
     background-color: #F5F5F5;
-    height: calc(100vh - 80px); /* Adjust height to leave space for footer */
+    height: calc(100vh); /* Adjust height to leave space for footer */
     position: relative;
 }
 
@@ -93,7 +93,7 @@ body {
     border: 1px solid #404D28;
     border-radius: 30px;
     height: 40px;
-    width: 50%;
+    width: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,7 +113,7 @@ body {
 
 .add-button {
     position: absolute;
-    bottom: 0;
+    bottom: 70px;
     right: 50px;
     background-color: #66723b;
     color: white;
@@ -311,50 +311,273 @@ body.dark-mode .footer .username-container:hover {
     background-color: #ffffff; /* Dark mode footer container hover color */
 }
 
-
-
-
-/* Responsive Styles for screens 601px to 1024px */
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
     .sidebar {
-        width: 180px;
+        width: 150px;
         padding-top: 15px;
     }
 
     .sidebar p {
-        font-size: 30px;
-        margin: 10px 0px 20px 15px;
+        font-size: 36px;
+        margin: 10px 0px 20px 0px;
+
     }
 
     .sidebar a {
-        font-size: 14px;
+        font-size: 15.5px;
+        padding: 7.9px 11px;
+        margin-left: 5px;
+        color: #ffffff;
+        margin-left: 0%;
     }
 
     .sidebar img {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 25px;
+        color: #ffffff;
     }
 
     .content {
-        margin-left: 180px;
-        padding: 15px;
+        margin-left: 150px; /* Adjust margin to keep content in view */
+        padding: 10px; /* Reduced padding for mobile */
+        font-size: 14px; /* Adjusted font size for mobile */
+        background-color: #F5F5F5;
+        height: 100vh; /* Full viewport height */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: #7F9973;
+    }
+
+    .content p {
         font-size: 16px;
     }
 
-    .notes-icon img {
+    .search-container {
+        width: 70%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Aligns the input to the start (left) */
+        margin-top: 10px;
+        padding-left: 10px; /* Optional: Adds some padding for spacing */
+    }
+    
+    .search-input {
+        width: 80%;
+        height: 100%;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        margin-left: 2px;
+    }
+
+    .trash-icon img {
         width: 80px;
         height: 80px;
     }
 
+    .add-button {
+        position: absolute;
+        bottom: 50px;
+        right: 20px;
+        background-color: #66723b;
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 2;
+    }
+
     .footer {
-        width: 13%;
+        width: 100%;
         font-size: 14px;
-        bottom: 5px;
-        
+        bottom: 10px;
+    } 
+    .footer a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
     }
 
     .footer .username-container {
-        font-size: 14px;
-        width: 130%;
+        background-color: rgba(255, 255, 255, 1.0);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        color: #667C3E;
+        width: 10.5%;
+        font-size: 13px;
+        margin-bottom: -4.5px;
+        margin-left: -8px;
+        padding: 6px 17px;
+    }
+
+    .footer .username-container img {
+        margin-left: -7px;
+        margin-right: 6px;
+        width: 25px; /* Adjusted image size for mobile */
+        height: 25px; /* Adjusted image size for mobile */
+    }
+
+    .footer .username-container:hover {
+        background-color: #404D28;
+        color: white;
+    }
+}
+
+
+@media only screen and (max-width: 600px) { 
+    /* Base Styles */
+    body {
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+        width: 111.9px; /* Keep the width same */
+        background-color: #667C3E;
+        position: fixed;
+        height: 100%;
+        padding-top: 20px;
+        border-right: 1px solid white;
+        /* Ensuring sidebar is always on the left side */
+    }
+
+    .sidebar p {
+        color: white;
+        text-align: left;
+        margin: 10px 0px 10px 10px;
+        font-family: 'Jomhuria', cursive;
+        font-size: 30px; /* Adjusted font size for mobile */
+    }
+
+    .sidebar a {    
+        padding: 7px 10px;
+        text-decoration: none;
+        font-size: 14px; /* Adjusted font size for mobile */
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+
+    .sidebar a:hover {
+        background-color: #7F9973;
+    }
+
+    .sidebar img {
+        margin-right: 10px;
+        width: 25px; /* Adjusted image size for mobile */
+        height: 25px; /* Adjusted image size for mobile */
+    }
+
+    .content {
+        margin-left: 110px; /* Adjust margin to keep content in view */
+        padding: 10px; /* Reduced padding for mobile */
+        font-size: 14px; /* Adjusted font size for mobile */
+        background-color: #F5F5F5;
+        height: 100vh; /* Full viewport height */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: #7F9973;
+    }
+
+    .content p {
+        color: #667C3E;
+        display: flex;
+        margin-top: 0; /* Reset margin for better alignment */
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+    }
+
+    .search-container {
+        width: 70%;
+        height: 6%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Aligns the input to the start (left) */
+        margin-top: 10px;
+        padding-left: 10px; /* Optional: Adds some padding for spacing */
+    }
+    
+    .search-input {
+        width: 80%;
+        height: 100%;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        margin-left: 2px;
+    }
+
+    .no-notes img {
+        width: 60px; /* Adjusted image size for mobile */
+        height: 60px; /* Adjusted image size for mobile */
+    }
+
+    .add-button {
+        position: absolute;
+        bottom: 40px;
+        right: 20px;
+        background-color: #66723b;
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 10px;
+        left: 12px;
+        font-size: 12px;
+        width: 13%; /* Keep the width same */
+        color: #404D28;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer .username-container {
+        background-color: rgba(255, 255, 255, 1.0);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        color: #667C3E;
+        width: 180%; /* Full width for mobile view */
+        font-size: 11px;
+        margin-bottom: -4.5px;
+        margin-left: -8px;
+        padding: 6px 17px;
+    }
+
+    .footer .username-container img {
+        margin-left: -7px;
+        margin-right: 6px;
+        width: 20px; /* Adjusted image size for mobile */
+        height: 20px; /* Adjusted image size for mobile */
+    }
+
+    .footer .username-container:hover {
+        background-color: #404D28;
+        color: white;
     }
 }
