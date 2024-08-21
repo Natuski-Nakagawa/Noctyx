@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'C:/xampp/htdocs/Noctyx/server/database/dbcon.php';
+include 'D:/xampp/htdocs/Noctyx/server/database/dbcon.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("location: /noctyx/client/pages/login.php");
@@ -79,5 +79,3 @@ if (!isset($_SESSION['user_id'])) {
     <script src="../../server/script/script.js" defer></script>
 </body>
 </html>
-
-
