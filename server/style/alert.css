@@ -1,0 +1,45 @@
+.custom-alert {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.11);
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 1000; /* Ensure it appears above other elements */
+    margin-top: 10px;
+}
+
+.custom-alert-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 15px;
+    width: 100%;
+    max-width: 250px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+#customAlertClose {
+    display: flex;
+    background-color: #5bc0de;
+    justify-content: center;
+    margin: 10px 0px 0px 0px;
+    padding: 3% 5%;
+    width: 30%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+#customAlertClose:hover {
+    background-color: #1f95b9;
+}

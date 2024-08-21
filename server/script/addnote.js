@@ -13,10 +13,10 @@ function closeModal() {
     editIndex = null;
 }
 
-function createNoteElement(id, title, content) {
+function createNoteElement(id, title, content, ndate) {
     const note = document.createElement('div');
     note.className = 'note';
-    note.dataset.id = id; // Store the note ID in a data attribute
+    note.dataset.id = id;
 
     const noteContent = document.createElement('div');
     noteContent.className = 'note-content';
@@ -24,6 +24,11 @@ function createNoteElement(id, title, content) {
     const formattedContent = content.replace(/\n/g, '<br>');
     noteContent.innerHTML = `<strong>${title}</strong><br>${formattedContent}`;
     note.appendChild(noteContent);
+
+    const noteTimestamp = document.createElement('div');
+    noteTimestamp.className = 'note-timestamp';
+    noteTimestamp.textContent = `${new Date(ndate).toLocaleString()}`;
+    note.appendChild(noteTimestamp);
 
     const noteIcons = document.createElement('div');
     noteIcons.className = 'note-icons';
@@ -36,7 +41,7 @@ function createNoteElement(id, title, content) {
         document.getElementById('noteContent').value = content;
         openModal();
         isEditing = true;
-        editIndex = id; // Store the note's ID for editing
+        editIndex = id;
     });
     noteIcons.appendChild(editIcon);
 
@@ -47,48 +52,47 @@ function createNoteElement(id, title, content) {
         // Show the confirmation overlay
         const overlay = document.getElementById('deleteConfirmationOverlay');
         overlay.style.display = 'flex';
-    
+
         // Handle the confirmation button click
         document.getElementById('confirmDelete').onclick = function() {
             // Proceed with deletion
             const data = new FormData();
-            data.append('id', id); // Send the note ID to the server
-    
+            data.append('id', id);
+
             fetch('/noctyx/server/php/del-notes.php', {
                 method: 'POST',
                 body: data
             })
             .then(response => response.text())
             .then(data => {
-                console.log(data); // Handle the response from the PHP script
+                console.log(data);
                 if (data === 'Note deleted successfully') {
-                    note.remove(); // Remove the note from the UI
+                    note.remove();
                     checkNoNotes();
                 } else {
-                    alert('Failed to delete the note.'); // Handle deletion failure
+                    alert('Failed to delete the note.');
                 }
             })
             .catch(error => {
                 console.error('Error deleting note:', error);
             });
-    
+
             // Hide the overlay after deletion
             overlay.style.display = 'none';
         };
-    
+
         // Handle the cancel button click
         document.getElementById('cancelDelete').onclick = function() {
-            // Hide the overlay without deleting the note
             overlay.style.display = 'none';
         };
     });
-    
 
     noteIcons.appendChild(deleteIcon);
 
     note.appendChild(noteIcons);
     document.getElementById('noteContainer').appendChild(note);
 }
+
 
 
 function checkNoNotes() {
@@ -101,32 +105,46 @@ function checkNoNotes() {
     }
 }
 
+function showCustomAlert(message) {
+    document.getElementById('customAlertMessage').textContent = message;
+    document.getElementById('customAlert').style.display = 'flex';
+}
+
+document.getElementById('customAlertClose').addEventListener('click', function() {
+    document.getElementById('customAlert').style.display = 'none';
+});
+
+// Example usage in the save note function
 document.getElementById('saveNote').addEventListener('click', function() {
+    console.log('Save button clicked'); // Debug line
+
     const title = document.getElementById('noteTitle').value;
     const content = document.getElementById('noteContent').value;
 
     if (title.trim() === '' || content.trim() === '') {
-        alert('Title and content cannot be empty.');
+        showCustomAlert('Title and content cannot be empty.');
         return;
     }
 
-    // Send the data to the PHP script via AJAX
+    // Debug the FormData object
     const data = new FormData();
     data.append('title', title);
     data.append('content', content);
-
-    // Append editIndex if in editing mode
     if (isEditing) {
         data.append('editIndex', editIndex);
     }
 
+    for (let [key, value] of data.entries()) {
+        console.log(`${key}: ${value}`); // Debug line
+    }
+    
     fetch('/noctyx/server/php/save-note.php', {
         method: 'POST',
         body: data
     })
     .then(response => response.text())
     .then(data => {
-        console.log(data); // Handle the response from the PHP script
+        console.log('Server response:', data); // Debug line
         if (data === 'Note saved successfully') {
             if (isEditing) {
                 const noteElement = document.querySelector(`[data-id="${editIndex}"]`);
@@ -137,14 +155,20 @@ document.getElementById('saveNote').addEventListener('click', function() {
                 createNoteElement(null, title, content); // Add the note to the UI
             }
             closeModal();
+
+            window.location.href = '/noctyx/client/pages/homemenu.php'; 
         } else {
-            alert(data); // Display error message
+            showCustomAlert(data); // Display error message
         }
     })
     .catch(error => {
         console.error('Error saving note:', error);
     });
+    
 });
+
+
+
 
 window.onclick = function(event) {
     if (event.target == document.getElementById('noteModal')) {
@@ -154,20 +178,21 @@ window.onclick = function(event) {
 
 // Check if there are any notes on page load
 document.addEventListener('DOMContentLoaded', function() {
-    // Fetch notes when the page loads
     fetch('/noctyx/server/php/display-notes.php')
         .then(response => response.text())
         .then(data => {
             if (data.trim() !== '') {
                 const notes = data.split('\n').filter(note => note.trim() !== '');
                 notes.forEach(note => {
-                    const [id, title, content] = note.split('|');
-                    createNoteElement(id, title, content);
+                    const [id, title, content, ndate] = note.split('|');
+                    createNoteElement(id, title, content, ndate);
                 });
             }
-            checkNoNotes(); // Update "No notes" visibility
+            checkNoNotes();
         })
         .catch(error => {
             console.error('Error fetching notes:', error);
         });
 });
+
+

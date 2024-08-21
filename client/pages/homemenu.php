@@ -16,6 +16,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>Home Menu</title>
     <link rel="stylesheet" href="../../server/style/homemenu.css">
     <link rel="stylesheet" href="../../server/style/del-confirm.css">
+    <link rel="stylesheet" href="../../server/style/alert.css">
     <link href="../../server/style/overlay.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
     <script src="../../server/script/script.js" defer></script> <!-- Include the script.js script -->
@@ -84,9 +85,15 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
 
+    <div id="customAlert" class="custom-alert">
+        <div class="custom-alert-content">
+            <span id="customAlertMessage"></span>
+            <button id="customAlertClose">OK</button>
+        </div>
+    </div>
 
-    <script src="../../server/script/addnote.js"></script>
-    <script src="../../server/script/notif.js"></script>
+    <script src="../../server/script/addnote.js" defer></script>
+    <script src="../../server/script/notif.js" defer></script>
     
 </body>
 </html>

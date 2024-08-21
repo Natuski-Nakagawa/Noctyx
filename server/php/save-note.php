@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['editIndex'])) {
         $note_id = intval($_POST['editIndex']);
-        $stmt = $conn->prepare("UPDATE notes SET title = ?, content = ? WHERE id = ? AND user_id = ?");
+        $stmt = $conn->prepare("UPDATE notes SET title = ?, content = ?, ndate = NOW() WHERE id = ? AND user_id = ?");
         $stmt->bind_param("ssii", $title, $content, $note_id, $user_id);
     } else {
-        $stmt = $conn->prepare("INSERT INTO notes (title, content, user_id) VALUES (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO notes (title, content, user_id, ndate) VALUES (?, ?, ?, NOW())");
         $stmt->bind_param("ssi", $title, $content, $user_id);
     }
 
@@ -37,5 +37,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo "Invalid request method.";
 }
-
 ?>
