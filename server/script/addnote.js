@@ -27,7 +27,7 @@ function createNoteElement(id, title, content, ndate) {
 
     const noteTimestamp = document.createElement('div');
     noteTimestamp.className = 'note-timestamp';
-    noteTimestamp.textContent = `${new Date(ndate).toLocaleString()}`;
+    noteTimestamp.textContent = `Last update: ${new Date(ndate).toLocaleString()}`;
     note.appendChild(noteTimestamp);
 
     const noteIcons = document.createElement('div');
