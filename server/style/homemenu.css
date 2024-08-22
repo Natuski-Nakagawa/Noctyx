@@ -176,10 +176,18 @@ body {
 .note-content {
     flex-grow: 1;
     color: #667C3E;
-    overflow: auto; /* Allow scrolling if content overflows */
-    word-wrap: break-word; /* Wrap long words to prevent horizontal scrolling */
-    white-space: pre-wrap; /* Preserve whitespace and line breaks */
+    overflow: hidden; /* Hide overflowing content */
+    text-overflow: ellipsis; /* Apply ellipsis when text overflows */
+    display: -webkit-box; /* Enable the use of -webkit-line-clamp */
+    -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+    -webkit-line-clamp: 9; /* Limit the number of lines before applying ellipsis */
+    word-wrap: break-word; /* Ensure long words break correctly */
+    line-height: 1; /* Adjust line height to control spacing between lines */
+    max-height: 9.1em; /* Control maximum height based on the number of lines */
+    height: auto; /* Allow the content to determine the height */
 }
+
+
 
 .note-content strong {
     display: block; /* Makes the title a block element */
