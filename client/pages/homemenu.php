@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'D:/xampp/htdocs/Noctyx/server/database/dbcon.php';
+include '/xampp/htdocs/Noctyx/server/database/dbcon.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("location: /noctyx/client/pages/login.php");
@@ -17,6 +17,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="../../server/style/homemenu.css">
     <link rel="stylesheet" href="../../server/style/del-confirm.css">
     <link rel="stylesheet" href="../../server/style/alert.css">
+    <link rel="stylesheet" href="../../server/style/search.css">
     <link href="../../server/style/overlay.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
     <script src="../../server/script/script.js" defer></script> <!-- Include the script.js script -->
@@ -45,9 +46,9 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 
     <div class="content">
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search your notes">
-        </div>
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search your notes" oninput="searchNotes()">
+    </div>
         
                 <div id="noNotes" class="no-notes">
                     <img src="../assets/no-notes.png" alt="No Notes Icon">
@@ -57,7 +58,7 @@ if (!isset($_SESSION['user_id'])) {
         <button class="add-button" onclick="openModal()">+</button>
 
         <div id="noteContainer">
-            <div id="noteModal">
+            <div id="noteModal" class="modal">
                 <div class="modal-content">
                     <input type="text" id="noteTitle" placeholder="Title">
                     <textarea id="noteContent" placeholder="Take a note..."></textarea>
@@ -94,6 +95,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <script src="../../server/script/addnote.js" defer></script>
     <script src="../../server/script/notif.js" defer></script>
+    <script src="../../server/script/search.js" defer></script>
     
 </body>
 </html>

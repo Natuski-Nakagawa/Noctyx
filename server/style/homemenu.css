@@ -312,7 +312,8 @@ body.dark-mode .footer .username-container:hover {
 }
 
 .note-timestamp {
-    font-size: 0.8em; /* Smaller font size for the timestamp */
+    padding-top: 8px;
+    font-size: 0.7em; /* Smaller font size for the timestamp */
     color: #5c4848; /* Light gray color */
     text-align: left; /* Align text to the right */
 }

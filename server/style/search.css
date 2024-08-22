@@ -1,0 +1,84 @@
+.note {
+    background-color: white;
+    border-top: 5px solid #404D28;
+    border-radius: 5px;
+    padding: 20px; /* Increased padding for more space inside tiles */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 200px; /* Increased height */
+}
+
+.note h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.note p {
+    margin: 5px 0;
+}
+
+.note small {
+    color: #777;
+}
+
+/* Styles for the modal */
+#noteModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+#noteModal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+    height: auto; /* Adjust height to fit content */
+    max-height: 60%;
+    overflow: hidden; /* Prevent scrolling */
+    display: flex;
+    flex-direction: column; /* Ensure elements stack vertically */
+}
+
+#noteModal input {
+    width: calc(100% - 22px); /* Adjust width to fit within padding */
+    height: 8%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #404D28;
+    font-size: 20px;
+}
+
+#noteModal textarea {
+    width: calc(100% - 22px); /* Adjust width to fit within padding */
+    height: 300px;
+    margin-bottom: 8px;
+    border: 1px solid #404D28;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px; 
+}
+
+#noteModal button {
+    padding: 5px;
+    width: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #404D28;
+    border-color: #667C3E;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-top: 10px;
+}
+

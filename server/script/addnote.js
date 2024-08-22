@@ -116,8 +116,6 @@ document.getElementById('customAlertClose').addEventListener('click', function()
 
 // Example usage in the save note function
 document.getElementById('saveNote').addEventListener('click', function() {
-    console.log('Save button clicked'); // Debug line
-
     const title = document.getElementById('noteTitle').value;
     const content = document.getElementById('noteContent').value;
 
@@ -126,37 +124,30 @@ document.getElementById('saveNote').addEventListener('click', function() {
         return;
     }
 
-    // Debug the FormData object
     const data = new FormData();
     data.append('title', title);
     data.append('content', content);
     if (isEditing) {
-        data.append('editIndex', editIndex);
+        data.append('editIndex', editIndex); // Pass the note ID to the server for updating
     }
 
-    for (let [key, value] of data.entries()) {
-        console.log(`${key}: ${value}`); // Debug line
-    }
-    
     fetch('/noctyx/server/php/save-note.php', {
         method: 'POST',
         body: data
     })
     .then(response => response.text())
     .then(data => {
-        console.log('Server response:', data); // Debug line
         if (data === 'Note saved successfully') {
             if (isEditing) {
                 const noteElement = document.querySelector(`[data-id="${editIndex}"]`);
                 if (noteElement) {
                     noteElement.querySelector('.note-content').innerHTML = `<strong>${title}</strong><br>${content.replace(/\n/g, '<br>')}`;
+                    noteElement.querySelector('.note-timestamp').textContent = `Last update: ${new Date().toLocaleString()}`;
                 }
             } else {
-                createNoteElement(null, title, content); // Add the note to the UI
+                createNoteElement(editIndex, title, content); // Add the new note to the UI
             }
             closeModal();
-
-            window.location.href = '/noctyx/client/pages/homemenu.php'; 
         } else {
             showCustomAlert(data); // Display error message
         }
@@ -164,11 +155,7 @@ document.getElementById('saveNote').addEventListener('click', function() {
     .catch(error => {
         console.error('Error saving note:', error);
     });
-    
 });
-
-
-
 
 window.onclick = function(event) {
     if (event.target == document.getElementById('noteModal')) {
