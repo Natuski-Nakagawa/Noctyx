@@ -143,7 +143,7 @@ document.getElementById('saveNote').addEventListener('click', function() {
                     noteElement.querySelector('.note-timestamp').textContent = `Last update: ${new Date().toLocaleString()}`;
                 }
             } else {
-                createNoteElement(editIndex, title, content); // Add the new note to the UI
+                createNoteElement(editIndex, title, content, new Date().toISOString()); // Add the new note to the UI
             }
             closeModal();
         } else {
@@ -155,24 +155,11 @@ document.getElementById('saveNote').addEventListener('click', function() {
     });
 });
 
-
 window.onclick = function(event) {
-    if (event.target == document.getElementById('noteModal')) {
+    if (event.target === document.getElementById('noteModal')) {
         closeModal();
-
-// Handle cancel button click to close modal
-document.getElementById('cancelNote').addEventListener('click', function() {
-    closeModal();
-});
-
-// Prevent modal close when clicking outside of it
-document.getElementById('noteModal').addEventListener('click', function(event) {
-    if (event.target === this) {
-        // Prevent closing the modal if clicking outside the content
-        event.stopPropagation();
-
     }
-});
+}
 
 // Check if there are any notes on page load
 document.addEventListener('DOMContentLoaded', function() {
