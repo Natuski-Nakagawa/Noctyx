@@ -180,11 +180,13 @@ body {
     text-overflow: ellipsis; /* Apply ellipsis when text overflows */
     display: -webkit-box; /* Enable the use of -webkit-line-clamp */
     -webkit-box-orient: vertical; /* Set the box orientation to vertical */
-    -webkit-line-clamp: 9; /* Limit the number of lines before applying ellipsis */
+    -webkit-line-clamp: 8; /* Limit the number of lines before applying ellipsis */
+    line-clamp: 3;
     word-wrap: break-word; /* Ensure long words break correctly */
-    line-height: 1; /* Adjust line height to control spacing between lines */
-    max-height: 9.1em; /* Control maximum height based on the number of lines */
+    line-height: 1.2; /* Adjust line height to control spacing between lines */
+    max-height: 10em; /* Control maximum height based on the number of lines */
     height: auto; /* Allow the content to determine the height */
+    word-spacing: 0.1em;
 }
 
 

@@ -27,11 +27,11 @@
                             <input type="password" id="pass" name="password" placeholder="Enter your password" required>
                         </div>
                         <div class="form-group2">
-                            <div>
+                            <div class="fg2-left">
                                 <input type="checkbox" name="Remember me">
-                                <label2 for="remember">Remember me</label2>
+                                <label for="remember">Remember me</label>
                             </div>
-                            <div>
+                            <div class="fg2-right">
                                 <a href="#" >Forgot password</a>
                             </div>
                         </div>
