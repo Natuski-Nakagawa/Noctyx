@@ -363,6 +363,26 @@ body.dark-mode .note {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Darker shadow for dark mode */
 }
 
+body.dark-mode .note-footer {
+    display: flex;
+    justify-content: space-between; /* Space out timestamp and icons */
+    align-items: center; /* Center items vertically */
+    margin-top: 10px; /* Space above the footer */
+}
+
+body.dark-mode .note-timestamp {
+    font-size: 0.71em; /* Adjust font size if needed */
+    color: #d8d8d8; /* Adjust color if needed */
+}
+
+body.dark-mode .note-icons img {
+    width: 20px; /* Adjust icon size if needed */
+    height: 20px;
+    margin-left: 10px; /* Space between icons */
+    cursor: pointer; /* Add a pointer cursor for clickable icons */
+}
+
+
 /* Dark mode for note content */
 body.dark-mode .note-content {
     color: #b0b0b0; /* Dark mode text color */
