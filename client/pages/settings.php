@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'D:/xampp/htdocs/Noctyx/server/database/dbcon.php';
+include ':/xampp/htdocs/Noctyx/server/database/dbcon.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("location: /noctyx/client/pages/login.php");
