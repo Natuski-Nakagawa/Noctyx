@@ -25,10 +25,14 @@ function createNoteElement(id, title, content, ndate) {
     noteContent.innerHTML = `<strong>${title}</strong><br>${formattedContent}`;
     note.appendChild(noteContent);
 
+    // Create a wrapper for timestamp and icons
+    const noteFooter = document.createElement('div');
+    noteFooter.className = 'note-footer';
+
     const noteTimestamp = document.createElement('div');
     noteTimestamp.className = 'note-timestamp';
     noteTimestamp.textContent = `Last update: ${new Date(ndate).toLocaleString()}`;
-    note.appendChild(noteTimestamp);
+    noteFooter.appendChild(noteTimestamp);
 
     const noteIcons = document.createElement('div');
     noteIcons.className = 'note-icons';
@@ -89,7 +93,11 @@ function createNoteElement(id, title, content, ndate) {
 
     noteIcons.appendChild(deleteIcon);
 
-    note.appendChild(noteIcons);
+    // Append noteIcons and noteTimestamp to noteFooter, and noteFooter to note
+    noteFooter.appendChild(noteIcons);
+    note.appendChild(noteFooter);
+
+    // Append the note to the container
     document.getElementById('noteContainer').appendChild(note);
 }
 

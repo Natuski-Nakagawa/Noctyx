@@ -334,11 +334,27 @@ body.dark-mode .footer .username-container:hover {
 }
 
 
+
+
+.note-footer {
+    display: flex;
+    justify-content: space-between; /* Space out timestamp and icons */
+    align-items: center; /* Center items vertically */
+    margin-top: 10px; /* Space above the footer */
+}
+
 .note-timestamp {
-    padding-top: 8px;
-    font-size: 0.7em; /* Smaller font size for the timestamp */
-    color: #5c4848; /* Light gray color */
-    text-align: left; /* Align text to the right */
+    font-size: 0.71em; /* Adjust font size if needed */
+    color: #5c4848; /* Adjust color if needed */
+}
+
+.note-icons img {
+    width: 20px; /* Adjust icon size if needed */
+    height: 20px;
+    margin-left: 10px; /* Space between icons */
+    cursor: pointer; /* Add a pointer cursor for clickable icons */
+}
+
 
 body.dark-mode .note {
     background-color: #404D28; /* Dark mode background for note tiles */
@@ -893,5 +909,4 @@ body.dark-mode .search-input::placeholder {
         margin-top: 10px;
     }
 
-}
 }
