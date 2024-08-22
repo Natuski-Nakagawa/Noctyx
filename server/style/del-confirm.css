@@ -1,4 +1,3 @@
-/* Overlay */
 .deloverlay {
     position: fixed;
     top: 0;
@@ -19,6 +18,10 @@
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.del-overlay-content p{
+    color: black;
 }
 
 /* Buttons */

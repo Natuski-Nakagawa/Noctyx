@@ -62,7 +62,10 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="modal-content">
                     <input type="text" id="noteTitle" placeholder="Title">
                     <textarea id="noteContent" placeholder="Take a note..."></textarea>
-                <button id="saveNote"><b>Save</b></button>
+                    <div class="button-container">
+                    <button id="saveNote"><b>Save</b></button>
+                    <button id="cancelNote">Cancel</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,5 +102,3 @@ if (!isset($_SESSION['user_id'])) {
     
 </body>
 </html>
-
-

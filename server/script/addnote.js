@@ -93,8 +93,6 @@ function createNoteElement(id, title, content, ndate) {
     document.getElementById('noteContainer').appendChild(note);
 }
 
-
-
 function checkNoNotes() {
     const noteContainer = document.getElementById('noteContainer');
     const noNotes = document.getElementById('noNotes');
@@ -114,7 +112,7 @@ document.getElementById('customAlertClose').addEventListener('click', function()
     document.getElementById('customAlert').style.display = 'none';
 });
 
-// Example usage in the save note function
+// Save note functionality
 document.getElementById('saveNote').addEventListener('click', function() {
     const title = document.getElementById('noteTitle').value;
     const content = document.getElementById('noteContent').value;
@@ -157,11 +155,24 @@ document.getElementById('saveNote').addEventListener('click', function() {
     });
 });
 
+
 window.onclick = function(event) {
     if (event.target == document.getElementById('noteModal')) {
         closeModal();
+
+// Handle cancel button click to close modal
+document.getElementById('cancelNote').addEventListener('click', function() {
+    closeModal();
+});
+
+// Prevent modal close when clicking outside of it
+document.getElementById('noteModal').addEventListener('click', function(event) {
+    if (event.target === this) {
+        // Prevent closing the modal if clicking outside the content
+        event.stopPropagation();
+
     }
-};
+});
 
 // Check if there are any notes on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -181,5 +192,3 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error fetching notes:', error);
         });
 });
-
-

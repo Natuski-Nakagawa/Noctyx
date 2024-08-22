@@ -79,5 +79,3 @@ if (!isset($_SESSION['user_id'])) {
     <script src="../../server/script/script.js" defer></script>
 </body>
 </html>
-
-
