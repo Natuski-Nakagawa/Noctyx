@@ -58,9 +58,7 @@ body{
             align-self: center;
             justify-self: center;
         }
-        .inner-right p{
-            
-        }
+        
 .form-group{
     display: flex;
     flex-direction: row;
