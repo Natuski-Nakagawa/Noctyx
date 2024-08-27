@@ -432,6 +432,11 @@ body.dark-mode .search-input::placeholder {
 
 }
 
+body.dark-mode .note-timestamp {
+    font-size: 0.71em; /* Adjust font size if needed */
+    color: #b0b0b0; /* Adjust color if needed */
+}
+
     @media only screen and (min-width: 601px) and (max-width: 1024px) {
         .sidebar {
             width: 150px;
