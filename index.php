@@ -25,7 +25,14 @@
         </div>  
         <div class="right">
             <div class="inner-right">
-                <p>Sign Up</p>
+                <div class="headering">
+                    <div class="arrow-con1">
+                        <div class="arrow left-arrow" ><a href="./client/pages/login.php"><i class="fas fa-arrow-left"></i>
+                        </a></div>
+                    </div>
+                    <p>Sign Up</p>
+                </div>
+                
                 <form action="./server/php/signup.php" method="post">
                     <div class="form-group">
                         <div class="form-groupright">

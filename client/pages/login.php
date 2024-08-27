@@ -40,14 +40,12 @@
                                 <button type="submit">Log in</button>
                             </div>
                             <div class="leftbut">
-                                <a href="/noctyx/index.php" class="leftbut-button">Sign up</a>
+                            <button type="button" onclick="window.location.href='/Noctyx/index.php';">Sign up</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="inner-left-bot">
-                    <img src="../assets/socials.png" alt="">
-                </div> 
+                
             </div>
         </div>
         <div class="right">
