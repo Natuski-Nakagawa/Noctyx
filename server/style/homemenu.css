@@ -1,0 +1,985 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    overflow: hidden; /* Hide the body scrollbar */
+}
+
+.sidebar {
+    width: 201px;
+    background-color: #667C3E;
+    position: fixed;
+    height: 100%;
+    padding-top: 20px;
+    border-right: 1px solid white;
+}
+
+.sidetop img{
+    display: none;
+}
+
+.sidebar p {
+    color: white;
+    margin: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Jomhuria', cursive;
+    font-size: 50px;
+}
+
+.sidebar a {    
+    padding: 10px 18px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a:hover {
+    background-color: #7F9973;
+}
+
+.sidebar img {
+    margin-right: 10px;
+    width: 25px;
+    height: 24px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    left: 12px;
+    font-size: 12px;
+    width: 13%;
+    color: #404D28;
+    display: flex;
+    align-items: center;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.footer .username-container {
+    background-color: rgba(255, 255, 255, 1.0);
+    padding: 5px 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: #667C3E;
+    width: 100%; 
+}
+
+.footer .username-container img {
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.footer .username-container:hover {
+    background-color: #404D28;
+    color: white;
+}
+
+.content {
+    margin-left: 200px;
+    padding: 20px;
+    background-color: #F5F5F5;
+    height: calc(100vh); /* Adjust height to leave space for footer */
+    position: relative;
+    border-left: 1px solid white;
+}
+
+.search-container {
+    background-color: white;
+    border: 1px solid #404D28;
+    border-radius: 30px;
+    height: 7%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    width: 90%;
+    height: 100%;
+    font-size: 15px;
+    color: #404D28;
+    background-color: transparent;
+    margin-left: -15px;
+}
+
+.add-button {
+    position: absolute;
+    bottom: 70px;
+    right: 50px;
+    background-color: #66723b;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.no-notes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: #404D28;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.no-notes img {
+    width: 80px;
+    height: 80px;
+}
+
+.no-notes p {
+    font-size: 18px;
+}
+
+#noteContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusted minimum width */
+    gap: 20px; /* Increased gap between tiles */
+    margin-top: 20px;
+    max-height: calc(100vh - 80px); /* Adjust height to fit within the content area */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.note {
+    background-color: white;
+    border-top: 5px solid #404D28;
+    border-radius: 5px;
+    padding: 20px; /* Increased padding for more space inside tiles */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 200px; /* Increased height */
+}
+
+.note-content {
+    flex-grow: 1;
+    color: rgba(102, 124, 62, 0.63);
+    overflow: hidden; /* Hide overflowing content */
+    text-overflow: ellipsis; /* Apply ellipsis when text overflows */
+    display: -webkit-box; /* Enable the use of -webkit-line-clamp */
+    -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+    -webkit-line-clamp: 8; /* Limit the number of lines before applying ellipsis */
+    line-clamp: 3;
+    word-wrap: break-word; /* Ensure long words break correctly */
+    line-height: 1.2; /* Adjust line height to control spacing between lines */
+    max-height: 10.3em; /* Control maximum height based on the number of lines */
+    height: auto; /* Allow the content to determine the height */
+    word-spacing: 0.1em;
+    font-size: 14px;
+    resize: none;
+}
+
+
+
+.note-content strong {
+    color: #667C3E;
+    display: block; /* Makes the title a block element */
+    font-size: 20px; /* Font size for the title, adjust as needed */
+    font-weight: bold; /* Make the title bold */
+}
+
+.note-icons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Increased gap between icons */
+}
+
+.note-icons img {
+    width: 24px; /* Increased icon size */
+    height: 24px; /* Increased icon size */
+}
+
+#noteModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+#noteModal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+    height: auto; /* Adjust height to fit content */
+    max-height: 60%;
+    overflow: hidden; /* Prevent scrolling */
+    display: flex;
+    flex-direction: column; /* Ensure elements stack vertically */
+}
+
+#noteModal input {
+    width: calc(100% - 22px); /* Adjust width to fit within padding */
+    height: 8%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #404D28;
+    font-size: 20px;
+}
+
+#noteModal textarea {
+    width: calc(100% - 22px); /* Adjust width to fit within padding */
+    height: 300px;
+    margin-bottom: 8px;
+    border: 1px solid #404D28;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    resize: none; 
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns buttons to the right */
+    gap: 10px; /* Adds space between buttons */
+    margin-top: 10px; /* Space above the button container */
+}
+
+#noteModal button {
+    padding: 5px;
+    width: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #404D28;
+    border-color: #667C3E;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+#noteModal #cancelNote {
+    display: flex;
+    width:8%;
+    background-color: #f44336; /* Red background for cancel button */
+    color: white; /* White text color for better contrast */
+    border-color: #d32f2f; /* Darker border for cancel button */
+}
+    
+    #cancelNote {
+
+    }
+
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+body.dark-mode .sidebar {
+    background-color: #1e1e1e; /* Dark mode sidebar background */
+}
+body.dark-mode .sidebar p {
+    color: #66723b;
+
+}
+body.dark-mode .sidebar a {
+    color: #e0e0e0; /* Dark mode sidebar link color */
+}
+
+body.dark-mode .sidebar a:hover {
+    background-color: #444444; /* Dark mode hover color */
+}
+
+body.dark-mode .sidebar img {
+    filter: brightness(0.8); /* Dark mode sidebar icon brightness */
+}
+
+body.dark-mode .content {
+    background-color: #1e1e1e; /* Dark mode content background */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+body.dark-mode .content p {
+    color: #b0b0b0; /* Dark mode text color */
+}
+
+body.dark-mode .notes-icon img {
+    filter: none; /* No blur for notes icon in dark mode */
+    opacity: 1; /* Full opacity for notes icon in dark mode */
+}
+
+body.dark-mode .footer {
+    color: #b0b0b0; /* Dark mode footer color */
+}
+
+body.dark-mode .footer a {
+    color: #b0b0b0; /* Dark mode footer link color */
+}
+
+body.dark-mode .footer .username-container {
+    background-color: #333333; /* Dark mode footer container background */
+    color: #e0e0e0; /* Dark mode footer container text color */
+}
+
+body.dark-mode .footer .username-container:hover {
+    background-color: #ffffff; /* Dark mode footer container hover color */
+}
+
+
+
+
+.note-footer {
+    display: flex;
+    justify-content: space-between; /* Space out timestamp and icons */
+    align-items: center; /* Center items vertically */
+    margin-top: 10px; /* Space above the footer */
+}
+
+.note-timestamp {
+    font-size: 0.71em; /* Adjust font size if needed */
+    color: #5c4848; /* Adjust color if needed */
+}
+
+.note-icons img {
+    width: 20px; /* Adjust icon size if needed */
+    height: 20px;
+    margin-left: 10px; /* Space between icons */
+    cursor: pointer; /* Add a pointer cursor for clickable icons */
+}
+
+
+body.dark-mode .note {
+    background-color: #404D28; /* Dark mode background for note tiles */
+    border-top: 5px solid #ffffff; /* Adjust border color for dark mode */
+    color: #e0e0e0; /* Dark mode text color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Darker shadow for dark mode */
+}
+
+/* Dark mode for note content */
+body.dark-mode .note-content {
+    color: #b0b0b0; /* Dark mode text color */
+}
+
+/* Dark mode for note title */
+body.dark-mode .note-content strong {
+    color: #ffffff; /* Title color in dark mode */
+}
+
+/* Dark mode for icons */
+body.dark-mode .note-icons img {
+    filter: brightness(0) invert(1); /* Set icons to white in dark mode */
+}
+
+/* If you're using font icons instead of images, use this */
+body.dark-mode .note-icons i {
+    color: #ffffff; /* Set font icons to white in dark mode */
+}
+
+/* Dark mode for the modal */
+body.dark-mode #noteModal .modal-content {
+    background-color: #2e2e2e; /* Dark mode background for modal */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+/* Dark mode for modal input fields */
+body.dark-mode #noteModal input,
+body.dark-mode #noteModal textarea {
+    background-color: #3a3a3a; /* Dark mode background for input fields */
+    color: #e0e0e0; /* Dark mode text color */
+    border: 1px solid #555555; /* Adjust border color for dark mode */
+}
+
+/* Dark mode for buttons */
+body.dark-mode #noteModal button {
+    background-color: #667C3E; /* Dark mode background for buttons */
+    color: #e0e0e0; /* Dark mode text color */
+    border-color: #404D28; /* Adjust border color for dark mode */
+}
+
+body.dark-mode .search-container {
+    background-color: #2e2e2e; /* Dark mode background for the search bar */
+    color: #e0e0e0; /* Dark mode text color */
+    border: 1px solid #555555; /* Dark mode border color */
+}
+
+/* Dark mode for the search input field */
+body.dark-mode .search-input {
+    background-color: transparent; /* Dark mode background for input field */
+    color: #e0e0e0; /* Dark mode text color */
+    caret-color: #ffffff; /* White caret (cursor) color */
+}
+
+/* Optional: Dark mode for search input placeholder text */
+body.dark-mode .search-input::placeholder {
+    color: #d8d8d8; /* Dark mode placeholder text color */
+
+}
+
+body.dark-mode .note-timestamp {
+    font-size: 0.71em; /* Adjust font size if needed */
+    color: #b0b0b0; /* Adjust color if needed */
+}
+
+    @media only screen and (min-width: 601px) and (max-width: 1024px) {
+        .sidebar {
+            width: 150px;
+            padding-top: 15px;
+        }
+    
+        .sidebar p {
+            font-size: 36px;
+            margin: 10px 0px 30px 0px;
+        }
+    
+        .sidebar a {
+            font-size: 15.5px;
+            padding: 7.9px 11px;
+            margin-left: 5px;
+            color: #ffffff;
+            margin-left: 0%;
+        }
+    
+        .sidebar img {
+            width: 24px;
+            height: 25px;
+            color: #ffffff;
+        }
+    
+        .content {
+            margin-left: 150px; /* Adjust margin to keep content in view */
+            padding: 10px; /* Reduced padding for mobile */
+            font-size: 14px; /* Adjusted font size for mobile */
+            background-color: #F5F5F5;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            color: #7F9973;
+        }
+    
+        .content p {
+            font-size: 16px;
+        }
+    
+        .search-container {
+            width: 70%;
+            height: 6%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Aligns the input to the start (left) */
+            margin-top: 10px;
+            padding-left: 10px; /* Optional: Adds some padding for spacing */
+        }
+    
+        .search-input {
+            width: 80%;
+            height: 100%;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            margin-left: 2px;
+        }
+    
+        .trash-icon img {
+            width: 80px;
+            height: 80px;
+        }
+    
+        .add-button {
+            position: absolute;
+            bottom: 50px;
+            right: 20px;
+            background-color: #66723b;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 2;
+        }
+    
+        .footer {
+            width: 100%;
+            font-size: 14px;
+            bottom: 10px;
+        }
+    
+        .footer a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+    
+        .footer .username-container {
+            background-color: rgba(255, 255, 255, 1.0);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            color: #667C3E;
+            width: 10.5%;
+            font-size: 13px;
+            margin-bottom: -4.5px;
+            margin-left: -8px;
+            padding: 6px 17px;
+        }
+    
+        .footer .username-container img {
+            margin-left: -7px;
+            margin-right: 6px;
+            width: 25px; /* Adjusted image size for mobile */
+            height: 25px; /* Adjusted image size for mobile */
+        }
+    
+        .footer .username-container:hover {
+            background-color: #404D28;
+            color: white;
+        }
+
+    #noteContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px; 
+            margin-top: 20px;
+            max-height: calc(100vh - 80px);
+            width: 100%;
+            overflow-y: auto;
+        }
+        
+        .note {
+            background-color: white;
+            border-top: 5px solid #404D28;
+            border-radius: 5px;
+            padding: 20px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 200px; /* Increased height */
+        }
+        
+        .note-content {
+            flex-grow: 1;
+            color: #667C3E;
+            overflow: hidden; /* Hide overflowing content */
+            text-overflow: ellipsis; /* Apply ellipsis when text overflows */
+            display: -webkit-box; /* Enable the use of -webkit-line-clamp */
+            -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+            -webkit-line-clamp: 8; /* Limit the number of lines before applying ellipsis */
+            line-clamp: 3;
+            word-wrap: break-word; /* Ensure long words break correctly */
+        }
+        
+        .note-content strong {
+            display: block; /* Makes the title a block element */
+            font-size: 20px; /* Font size for the title, adjust as needed */
+            font-weight: bold; /* Make the title bold */
+        }
+        
+        .note-icons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px; /* Increased gap between icons */
+        }
+        
+        .note-icons img {
+            width: 24px; /* Increased icon size */
+            height: 24px; /* Increased icon size */
+        }
+        
+        #noteModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #noteModal .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            height: auto; /* Adjust height to fit content */
+            max-height: 60%;
+            overflow: hidden; /* Prevent scrolling */
+            display: flex;
+            flex-direction: column; /* Ensure elements stack vertically */
+        }
+        
+        #noteModal input {
+            width: calc(100% - 22px); /* Adjust width to fit within padding */
+            height: 8%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #404D28;
+            font-size: 20px;
+        }
+        
+        #noteModal textarea {
+            width: calc(100% - 22px); /* Adjust width to fit within padding */
+            height: 300px;
+            margin-bottom: 8px;
+            border: 1px solid #404D28;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 15px; 
+        }
+        
+        #noteModal button {
+            padding: 5px;
+            width: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #404D28;
+            border-color: #667C3E;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+    }
+
+
+@media only screen and (max-width: 600px) { 
+    /* Base Styles */
+    body {
+        margin: 0;  
+        font-family: Arial, sans-serif;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    .sidebar {
+        width: 111.9px; /* Keep the width same */
+        background-color: #667C3E;
+        position: fixed;
+        width: 40px;
+        height: 100%;
+        padding-top: 20px;
+        border-right: 1px solid white;
+        overflow-x: hidden;
+    }
+
+    .sidebar p {
+        display: none;
+    }
+
+    .sidetop{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 35px;
+        margin-bottom: 50px;
+    }
+
+    .sidetop img{
+        display: flex;
+        width: 40px; /* Adjusted image size for mobile */
+        height: 40px; /* Adjusted image size for mobile */
+        margin: 0;
+    }
+
+    .sidemid {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 90%;
+        height: 70%;
+    }
+        
+    .sidemid img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        
+    }
+
+    .sidemid a {    
+        padding: 7px 10px;
+        text-decoration: none;
+        font-size: 14px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 75%;
+    }
+
+    .sidemid span {
+        display: none;
+    }
+
+    .sidemid a:hover {
+        background-color: #7F9973;
+    }
+
+    .content {
+        margin-left: 40px;
+        padding: 10px;
+        font-size: 14px;
+        background-color: #F5F5F5;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: #7F9973;
+        max-width: 100%;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        width: calc(100% - 40px);
+    }
+
+    .content p {
+        color: #667C3E;
+        display: flex;
+        margin-top: 0; /* Reset margin for better alignment */
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+    }
+
+    .search-container {
+        width: 70%;
+        height: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 5px 0px 0px 0px;
+        padding-left: 10px;
+    }
+    
+    .search-input {
+        width: 80%;
+        height: 100%;
+        font-size: 11px;
+        display: flex;
+        align-items: center;
+        margin-left: 2px;
+    }
+
+    .no-notes img {
+        width: 60px; /* Adjusted image size for mobile */
+        height: 60px; /* Adjusted image size for mobile */
+    }
+
+    .add-button {
+        position: absolute;
+        bottom: 15px;
+        right: 20px;
+        background-color: #66723b;
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 10px;
+        left: 12px;
+        font-size: 12px;
+        width: 13%; /* Keep the width same */
+        color: #404D28;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer .username-container {
+        background-color: rgba(255, 255, 255, 1.0);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        color: #667C3E;
+        width: 0.5px;
+        font-size:15px;
+        margin-bottom: -4.5px;
+        margin-left: -9.5px;
+        padding: 6px 17px;  
+    }
+
+    .footer .username-container img {
+        margin-left: 7px;
+        margin-right: 6px;
+        width: 20px; /* Adjusted image size for mobile */
+        height: 20px; /* Adjusted image size for mobile */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer .username-container:hover {
+        background-color: #404D28;
+        color: white;
+    }
+
+    #noteContainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        gap: 10px; 
+        margin-top: 20px;
+        max-height: calc(100vh - 80px);
+        width: 100%;
+        overflow-y: auto;
+    }
+    
+    .note {
+        background-color: white;
+        border-top: 5px solid #404D28;
+        border-radius: 5px;
+        padding: 20px; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        height: 200px;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .note-content {
+        flex-grow: 1;
+        color: #667C3E;
+        overflow: hidden; /* Hide overflowing content */
+        text-overflow: ellipsis; /* Apply ellipsis when text overflows */
+        display: -webkit-box; /* Enable the use of -webkit-line-clamp */
+        -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+        -webkit-line-clamp: 8; /* Limit the number of lines before applying ellipsis */
+        line-clamp: 3;
+        word-wrap: break-word; /* Ensure long words break correctly */
+    }
+    
+    .note-content strong {
+        display: block; /* Makes the title a block element */
+        font-size: 20px; /* Font size for the title, adjust as needed */
+        font-weight: bold; /* Make the title bold */
+    }
+    
+    .note-icons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px; /* Increased gap between icons */
+    }
+    
+    .note-icons img {
+        width: 24px; /* Increased icon size */
+        height: 24px; /* Increased icon size */
+    }
+    
+    #noteModal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #noteModal .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        height: auto;
+        max-height: 60%;
+        width: 80% !important; /* Force the width change */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #noteModal input {
+        width: calc(100% - 22px); /* Adjust width to fit within padding */
+        height: 8%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #404D28;
+        font-size: 20px;
+    }
+    
+    #noteModal textarea {
+        width: calc(100% - 22px); /* Adjust width to fit within padding */
+        height: 300px;
+        margin-bottom: 8px;
+        border: 1px solid #404D28;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 15px; 
+    }
+    
+    #noteModal button {
+        padding: 5px;
+        width: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #404D28;
+        border-color: #667C3E;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 13px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #noteModal #cancelNote {
+        display: flex;
+        width: 55px;
+        background-color: #f44336; /* Red background for cancel button */
+        color: white; /* White text color for better contrast */
+        border-color: #d32f2f; /* Darker border for cancel button */
+    }
+
+}

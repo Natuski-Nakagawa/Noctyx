@@ -1,0 +1,552 @@
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Light mode background */
+    color: #665b52; /* Light mode text color */
+}
+
+.sidebar {
+    width: 201px;
+    background-color: #667C3E; /* Light mode sidebar background */
+    position: fixed;
+    height: 100%;
+    padding-top: 20px;
+    border-right: 1px solid white;
+}
+
+.sidebar p {
+    color: white;
+    margin: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Jomhuria', cursive;
+    font-size: 50px;
+}
+
+.sidebar a {    
+    padding: 10px 18px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a:hover {
+    background-color: #7F9973;
+}
+
+.sidebar img {
+    margin-right: 10px;
+    width: 25px;
+    height: 24px;
+}
+
+.sidetop img{
+    display: none;
+}
+
+.menu-item {
+    width: 100%;
+    padding: 6px 20px;
+    margin-bottom: 10px;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background-color: #404D28;
+}
+
+.menu-item img {
+    width: 24px;
+    height: 24px;
+}
+
+.content {
+    flex-grow: 1;
+    background-color: #f5f5f5; /* Light mode content background */
+    padding: 20px;
+}
+
+.content h2 {
+    margin-left: 15%;
+    margin-bottom: 0;
+    font-size: 30px;
+    color: #404D28;
+}
+
+.settings-group {
+    margin-left: 17%;
+    margin-bottom: 20px;
+}
+
+.settings-group h3 {
+    font-size: 20px;
+    color: #404D28;
+}
+
+.settings-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.settings-item label {
+    font-size: 16px;
+    color: #667C3E;
+}
+
+.settings-item input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #66723b;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+}
+
+.settings-item input[type="checkbox"]:checked {
+    background-color: #66723b;
+}
+
+.settings-item input[type="checkbox"]:checked::before {
+    content: '✓';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+}
+
+.logout {
+    color: #A83232;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: right;
+    margin-top: 220px;
+    margin-right: 10px;
+}
+
+.logout button{
+    color: red;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.logout button:hover{
+    text-decoration: underline;
+}
+
+.logout a {
+    color: #A83232;
+}
+
+.logout:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    left: 12px;
+    font-size: 12px;
+    width: 13%;
+    color: #404D28;
+    display: flex;
+    align-items: center;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.footer .username-container {
+    background-color: rgba(255, 255, 255, 1.0);
+    padding: 5px 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: #667C3E;
+    width: 100%; 
+}
+
+.footer .username-container img {
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.footer .username-container:hover {
+    background-color:#404D28; 
+    color: white;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+body.dark-mode .sidebar {
+    background-color: #1e1e1e; /* Dark mode sidebar background */
+}
+body.dark-mode .sidebar p {
+    color: #66723b;
+
+}
+body.dark-mode .sidebar a {
+    color: #ffffff; /* Dark mode link color */
+}
+
+body.dark-mode .sidebar a:hover {
+    background-color: #333333; /* Dark mode link hover color */
+}
+
+body.dark-mode .content {
+    background-color: #1e1e1e; /* Dark mode content background */
+}
+
+body.dark-mode .content h2 {
+    color: #66723b; /* Dark mode heading color */
+}
+
+body.dark-mode .settings-group h3 {
+    color: #667C3E; /* Dark mode section heading color */
+}
+
+body.dark-mode .settings-item label {
+    color: #e0e0e0; /* Dark mode label color */
+}
+
+body.dark-mode .menu-item {
+    color: #e0e0e0; /* Dark mode menu item color */
+}
+
+body.dark-mode .menu-item:hover,
+body.dark-mode .menu-item.active {
+    background-color: #333333; /* Dark mode menu item hover color */
+}
+
+body.dark-mode .settings-item input[type="checkbox"] {
+    border: 2px solid #333333;
+}
+
+body.dark-mode .settings-item input[type="checkbox"]:checked {
+    background-color: #333333;
+}
+
+body.dark-mode .logout {
+    color: #ffffff; /* Dark mode logout color */
+}
+
+body.dark-mode .footer {
+    color: #b0b0b0; /* Dark mode footer color */
+}
+
+body.dark-mode .footer a {
+    color: #b0b0b0; /* Dark mode footer link color */
+}
+
+body.dark-mode .footer .username-container {
+    background-color: #333333; /* Dark mode footer container background */
+    color: #e0e0e0; /* Dark mode footer container text color */
+}
+
+body.dark-mode .footer .username-container:hover {
+    background-color: #ffffff;
+}
+
+
+
+/* Responsive Styles */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .sidebar {
+        width: 150px;
+        padding-top: 15px;
+    }
+
+    .sidebar p {
+        font-size: 36px;
+        margin: 10px 0px 30px 0px;
+    }
+
+    .sidebar a {
+        font-size: 15.5px;
+        padding: 7.9px 11px;
+        margin-left: 5px;
+        color: #ffffff;
+        margin-left: 0%;
+    }
+
+    .sidebar img {
+        width: 24px;
+        height: 25px;
+        color: #ffffff;
+    }
+
+    .footer {
+        width: 100%;
+        font-size: 14px;
+        bottom: 10px;
+    }
+
+    .footer a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer .username-container {
+        background-color: rgba(255, 255, 255, 1.0);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        color: #667C3E;
+        width: 10.5%;
+        font-size: 13px;
+        margin-bottom: -4.5px;
+        margin-left: -8px;
+        padding: 6px 17px;
+    }
+
+    .footer .username-container img {
+        margin-left: -7px;
+        margin-right: 6px;
+        width: 25px; /* Adjusted image size for mobile */
+        height: 25px; /* Adjusted image size for mobile */
+    }
+
+    .footer .username-container:hover {
+        background-color: #404D28;
+        color: white;
+    }
+
+    .menu-item {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .content {
+        padding: 15px;
+        margin-left: 150px;
+    }
+
+    .content h2 {
+        margin-left: 0;
+        font-size: 28px;
+        text-align: flex-start;
+    }
+
+    .settings-group {
+        margin-left: 20px;
+    }
+
+    .settings-group h3 {
+        font-size: 18px;
+    }
+
+    .content button{
+        position: fixed;
+        bottom: 15px;
+        right: 20px;
+        font-size: 20px;
+    }
+
+    .footer {
+        width: 10%;
+        font-size: 14px;
+        bottom: 5px;
+    }
+    .footer .username-container {
+        width: 140%;
+      
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    body {
+        margin: 0;  
+        font-family: Arial, sans-serif;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    .sidebar {
+        width: 111.9px; /* Keep the width same */
+        background-color: #667C3E;
+        position: fixed;
+        width: 40px;
+        height: 100%;
+        padding-top: 20px;
+        border-right: 1px solid white;
+        overflow-x: hidden;
+    }
+
+    .sidebar p {
+        display: none;
+    }
+
+    .sidetop{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 35px;
+        margin-bottom: 50px;
+    }
+
+    .sidetop img{
+        display: flex;
+        width: 40px; /* Adjusted image size for mobile */
+        height: 40px; /* Adjusted image size for mobile */
+        margin: 0;
+    }
+
+    .sidemid {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 90%;
+        height: 70%;
+    }
+        
+    .sidemid img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        
+    }
+
+    .sidemid a {    
+        padding: 7px 10px;
+        text-decoration: none;
+        font-size: 14px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 75%;
+    }
+
+    .sidemid span {
+        display: none;
+    }
+
+    .sidemid a:hover {
+        background-color: #7F9973;
+    }
+
+    .menu-item {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .content {
+        padding: 10px;
+        margin-left: 50px;
+    }
+
+    .content h2 {
+        margin-left: 0;
+        font-size: 24px;
+        text-align: flex-start;
+    }
+
+    .settings-group {
+        margin-left: 20px;
+    }
+
+    .settings-group h3 {
+        font-size: 18px;
+    }
+
+    .settings-item {
+        flex-direction:row;
+        align-items: flex-start;
+        margin-bottom: 5px;     
+    }
+
+    .settings-item label {
+        font-size: 12px;
+    }
+
+    .settings-item input[type="checkbox"] {
+        margin-top: 5px;
+    }
+
+    .logout {
+        font-size: 18px;
+        margin-top: 180px;
+        margin-right: 5px;
+        text-align: right;
+    
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 10px;
+        left: 12px;
+        font-size: 12px;
+        width: 13%; /* Keep the width same */
+        color: #404D28;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer .username-container {
+        background-color: rgba(255, 255, 255, 1.0);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        color: #667C3E;
+        width: 0.5px;
+        font-size:15px;
+        margin-bottom: -4.5px;
+        margin-left: -9.5px;
+        padding: 6px 17px;  
+    }
+
+    .footer .username-container img {
+        margin-left: 7px;
+        margin-right: 6px;
+        width: 20px; /* Adjusted image size for mobile */
+        height: 20px; /* Adjusted image size for mobile */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer .username-container:hover {
+        background-color: #404D28;
+        color: white;
+    }
+}

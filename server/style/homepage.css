@@ -23,7 +23,7 @@ body {
 }
 
 .search-container {
-    background-color: white;
+    background-color: white; /* Light mode search container background */
     border-radius: 30px;
     height: 6%;
     width: 110%;
@@ -104,10 +104,24 @@ body {
 .content p {
     color: #99a482;
     font-size: 18px;
-    margin-top: -15px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.add-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    margin: 0px 40px 20px 0px;
+    background-color: #66723b;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .footer {
@@ -146,7 +160,7 @@ body {
 }
 
 .footer .username-container:hover {
-    background-color: #404D28; /* Light mode footer container hover color */
+    background-color: #404D28;
     color: white;
 }
 
@@ -160,25 +174,10 @@ body.dark-mode .sidebar {
     background-color: #1e1e1e; /* Dark mode sidebar background */
 }
 
-body.dark-mode .sidebar p {
-    color: #e0e0e0; /* Dark mode text color for sidebar */
-}
-
-body.dark-mode .sidebar a {
-    color: #e0e0e0; /* Dark mode sidebar link color */
-}
-
-body.dark-mode .sidebar a:hover {
-    background-color: #444444; /* Dark mode hover color */
-}
-
-body.dark-mode .sidebar img {
-    filter: brightness(0.8); /* Dark mode sidebar icon brightness */
-}
-
 body.dark-mode .search-container {
     background-color: #444444; /* Dark mode search container background */
 }
+
 body.dark-mode .menu-icon::before,
 body.dark-mode .menu-icon::after,
 body.dark-mode .menu-icon div {
@@ -186,12 +185,12 @@ body.dark-mode .menu-icon div {
 }
 
 body.dark-mode .search-input {
-    color: #e0e0e0; /* Dark mode input text color */
+    color: #e0e0e0;
 }
 
 body.dark-mode .content {
     background-color: #1e1e1e; /* Dark mode content background */
-    color: #e0e0e0; /* Dark mode text color */
+    color: #e0e0e0; /* Dark mode content text color */
 }
 
 body.dark-mode .trash-icon {
@@ -199,7 +198,12 @@ body.dark-mode .trash-icon {
 }
 
 body.dark-mode .content p {
-    color: #b0b0b0; /* Dark mode text color */
+    color: #b0b0b0; /* Dark mode paragraph color */
+}
+
+body.dark-mode .add-button {
+    background-color: #ffffff; /* Dark mode add button background */
+    color: #000000; /* Dark mode add button text color */
 }
 
 body.dark-mode .footer {
@@ -221,12 +225,16 @@ body.dark-mode .footer .username-container:hover {
 
 
 
-
-/* Responsive Styles */
+/* Responsive Styles for screens 601px to 1024px */
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
     .sidebar {
         width: 150px;
         padding: 15px;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .search-container {
@@ -239,18 +247,13 @@ body.dark-mode .footer .username-container:hover {
         height: 20px;
     }
 
-    .menu-icon::before,
-    .menu-icon::after,
-    .menu-icon div {
-        width: 60%;
-    }
-
     .search-input {
         font-size: 14px;
     }
 
     .content {
         padding: 20px;
+        flex-direction: column;
     }
 
     .trash-icon {
@@ -262,6 +265,12 @@ body.dark-mode .footer .username-container:hover {
         font-size: 16px;
     }
 
+    .add-button {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
     .footer {
         width: 10%;
         font-size: 14px;
@@ -269,6 +278,7 @@ body.dark-mode .footer .username-container:hover {
     }
     .footer .username-container {
         font-size: 14px;
-        width: 135%;
+        width: 130%;
     }
+
 }

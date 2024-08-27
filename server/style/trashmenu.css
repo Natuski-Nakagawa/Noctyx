@@ -1,0 +1,405 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 201px;
+    background-color: #667C3E;
+    position: fixed;
+    height: 100%;
+    padding-top: 20px;
+    border-right: 1px solid white;
+}
+
+.sidebar p {
+    color: white;
+    margin: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Jomhuria', cursive;
+    font-size: 50px;
+}
+
+.sidebar a {    
+    padding: 10px 18px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a:hover {
+    background-color: #7F9973;
+}
+
+.sidebar img {
+    margin-right: 10px;
+    width: 25px;
+    height: 24px;
+}
+
+.sidetop img{
+    display: none;
+}
+
+.content {
+    margin-left: 200px;
+    padding: 20px;
+    font-size: 18px;
+    background-color: #F5F5F5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #7F9973;
+}
+
+.content p {
+    color: #667C3E;
+    display: flex;
+    margin-top: -15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.trash-icon img {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    left: 12px;
+    font-size: 12px;
+    width: 13%;
+    color: #404D28;
+    display: flex;
+    align-items: center;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.footer .username-container {
+    background-color: rgba(255, 255, 255, 1.0);
+    padding: 5px 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: #667C3E;
+    width: 100%; 
+}
+
+.footer .username-container img {
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.footer .username-container:hover {
+    background-color: #404D28;
+    color: white;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+body.dark-mode .sidebar {
+    background-color: #1e1e1e; /* Dark mode sidebar background */
+}
+
+body.dark-mode .sidebar p {
+    color: #66723b; /* Dark mode text color for sidebar */
+}
+
+body.dark-mode .sidebar a {
+    color: #e0e0e0; /* Dark mode sidebar link color */
+}
+
+body.dark-mode .sidebar a:hover {
+    background-color: #444444; /* Dark mode hover color */
+}
+
+body.dark-mode .sidebar img {
+    filter: brightness(0.8); /* Dark mode sidebar icon brightness */
+}
+
+body.dark-mode .content {
+    background-color: #1e1e1e; /* Dark mode content background */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+body.dark-mode .content p {
+    color: #b0b0b0; /* Dark mode text color */
+}
+
+body.dark-mode .trash-icon img {
+    filter: none; /* No blur for trash icon in dark mode */
+    opacity: 1; /* Full opacity for trash icon in dark mode */
+}
+
+body.dark-mode .footer {
+    color: #b0b0b0; /* Dark mode footer color */
+}
+
+body.dark-mode .footer a {
+    color: #b0b0b0; /* Dark mode footer link color */
+}
+
+body.dark-mode .footer .username-container {
+    background-color: #333333; /* Dark mode footer container background */
+    color: #e0e0e0; /* Dark mode footer container text color */
+}
+
+body.dark-mode .footer .username-container:hover {
+    background-color: #ffffff; /* Dark mode footer container hover color */
+}
+
+
+
+
+/* Responsive Styles */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .sidebar {
+        width: 150px;
+        padding-top: 15px;
+    }
+
+    .sidebar p {
+        font-size: 36px;
+        margin: 10px 0px 30px 0px;
+
+    }
+
+    .sidebar a {
+        font-size: 15.5px;
+        padding: 7.9px 11px;
+        margin-left: 5px;
+        color: #ffffff;
+        margin-left: 0%;
+    }
+
+    .sidebar img {
+        width: 24px;
+        height: 25px;
+        color: #ffffff;
+    }
+
+    .content {
+        margin-left: 150px;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+
+    .trash-icon img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .footer {
+        width: 100%;
+        font-size: 14px;
+        bottom: 10px;
+    } 
+    .footer a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer .username-container {
+        background-color: rgba(255, 255, 255, 1.0);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        color: #667C3E;
+        width: 10.5%;
+        font-size: 13px;
+        margin-bottom: -4.5px;
+        margin-left: -8px;
+        padding: 6px 17px;
+    }
+
+    .footer .username-container img {
+        margin-left: -7px;
+        margin-right: 6px;
+        width: 25px; /* Adjusted image size for mobile */
+        height: 25px; /* Adjusted image size for mobile */
+    }
+
+    .footer .username-container:hover {
+        background-color: #404D28;
+        color: white;
+    }
+}
+
+
+@media only screen and (max-width: 600px) { 
+    /* Base Styles */
+    body {
+        margin: 0;  
+        font-family: Arial, sans-serif;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    .sidebar {
+        width: 111.9px; /* Keep the width same */
+        background-color: #667C3E;
+        position: fixed;
+        width: 40px;
+        height: 100%;
+        padding-top: 20px;
+        border-right: 1px solid white;
+        overflow-x: hidden;
+    }
+
+    .sidebar p {
+        display: none;
+    }
+
+    .sidetop{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 35px;
+        margin-bottom: 50px;
+    }
+
+    .sidetop img{
+        display: flex;
+        width: 40px; /* Adjusted image size for mobile */
+        height: 40px; /* Adjusted image size for mobile */
+        margin: 0;
+    }
+
+    .sidemid {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 90%;
+        height: 70%;
+    }
+        
+    .sidemid img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        
+    }
+
+    .sidemid a {    
+        padding: 7px 10px;
+        text-decoration: none;
+        font-size: 14px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 75%;
+    }
+
+    .sidemid span {
+        display: none;
+    }
+
+    .sidemid a:hover {
+        background-color: #7F9973;
+    }
+
+    .content {
+        margin-left: 40px; /* Adjust margin to keep content in view */
+        padding: 10px; /* Reduced padding for mobile */
+        font-size: 14px; /* Adjusted font size for mobile */
+        background-color: #F5F5F5;
+        height: 100vh; /* Full viewport height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #7F9973;
+    }
+
+    .content p {
+        color: #667C3E;
+        display: flex;
+        margin-top: 0; /* Reset margin for better alignment */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .trash-icon img {
+        width: 60px; /* Adjusted image size for mobile */
+        height: 60px; /* Adjusted image size for mobile */
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 10px;
+        left: 12px;
+        font-size: 12px;
+        width: 13%; /* Keep the width same */
+        color: #404D28;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer .username-container {
+        background-color: rgba(255, 255, 255, 1.0);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        color: #667C3E;
+        width: 0.5px;
+        font-size:15px;
+        margin-bottom: -4.5px;
+        margin-left: -9.5px;
+        padding: 6px 17px;  
+    }
+
+    .footer .username-container img {
+        margin-left: 7px;
+        margin-right: 6px;
+        width: 20px; /* Adjusted image size for mobile */
+        height: 20px; /* Adjusted image size for mobile */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer .username-container:hover {
+        background-color: #404D28;
+        color: white;
+    }
+}
