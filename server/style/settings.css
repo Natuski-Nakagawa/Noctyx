@@ -44,6 +44,10 @@ body {
     height: 24px;
 }
 
+.sidetop img{
+    display: none;
+}
+
 .menu-item {
     width: 100%;
     padding: 6px 20px;
@@ -342,24 +346,28 @@ body.dark-mode .footer .username-container:hover {
 
     .content {
         padding: 15px;
+        margin-left: 150px;
     }
 
     .content h2 {
-        margin-left: 28%;
+        margin-left: 0;
         font-size: 28px;
+        text-align: flex-start;
     }
 
     .settings-group {
-        margin-left: 30%;
+        margin-left: 20px;
     }
 
     .settings-group h3 {
         font-size: 18px;
     }
 
-    .logout {
-        font-size: 18px;
-        margin-top: 180px;
+    .content button{
+        position: fixed;
+        bottom: 15px;
+        right: 20px;
+        font-size: 20px;
     }
 
     .footer {
@@ -375,27 +383,79 @@ body.dark-mode .footer .username-container:hover {
 
 
 @media only screen and (max-width: 600px) {
+    body {
+        margin: 0;  
+        font-family: Arial, sans-serif;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
     .sidebar {
-        width: 35%;
-        height: auto;
-        position: relative;
+        width: 111.9px; /* Keep the width same */
+        background-color: #667C3E;
+        position: fixed;
+        width: 40px;
+        height: 100%;
+        padding-top: 20px;
+        border-right: 1px solid white;
+        overflow-x: hidden;
     }
 
     .sidebar p {
-        color: white;
-        text-align: center;
-        margin: 10px 0px 30px 0px;
-        font-family: 'Jomhuria', cursive;
-        font-size: 30px; /* Adjusted font size for mobile */
+        display: none;
     }
 
-    .sidebar a {    
-        padding: 8px 10px;
+    .sidetop{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 35px;
+        margin-bottom: 50px;
+    }
+
+    .sidetop img{
+        display: flex;
+        width: 40px; /* Adjusted image size for mobile */
+        height: 40px; /* Adjusted image size for mobile */
+        margin: 0;
+    }
+
+    .sidemid {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 90%;
+        height: 70%;
+    }
+        
+    .sidemid img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        
+    }
+
+    .sidemid a {    
+        padding: 7px 10px;
         text-decoration: none;
-        font-size: 14px; /* Adjusted font size for mobile */
+        font-size: 14px;
         color: white;
         display: flex;
         align-items: center;
+        justify-content: center;
+        width: 75%;
+    }
+
+    .sidemid span {
+        display: none;
+    }
+
+    .sidemid a:hover {
+        background-color: #7F9973;
     }
 
     .menu-item {
@@ -405,16 +465,17 @@ body.dark-mode .footer .username-container:hover {
 
     .content {
         padding: 10px;
+        margin-left: 50px;
     }
 
     .content h2 {
         margin-left: 0;
         font-size: 24px;
-        text-align: center;
+        text-align: flex-start;
     }
 
     .settings-group {
-        margin-left: 0;
+        margin-left: 20px;
     }
 
     .settings-group h3 {
@@ -444,32 +505,48 @@ body.dark-mode .footer .username-container:hover {
     }
 
     .footer {
-        width: 100%;
+        position: fixed;
+        bottom: 10px;
+        left: 12px;
         font-size: 12px;
-        bottom: 5px;
-        left: 0;
-        justify-content: center;
+        width: 13%; /* Keep the width same */
+        color: #404D28;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
     }
 
     .footer .username-container {
-        width: auto;
-        margin: 0 auto;
-        padding: 11px 16px;
-    }
-
-    .footer .username-container {
-        margin-left: 4px;
-        width: 23%;
-        font-size: 11px;
-        padding: 6px 15px;
-       
+        background-color: rgba(255, 255, 255, 1.0);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        color: #667C3E;
+        width: 0.5px;
+        font-size:15px;
+        margin-bottom: -4.5px;
+        margin-left: -9.5px;
+        padding: 6px 17px;  
     }
 
     .footer .username-container img {
+        margin-left: 7px;
         margin-right: 6px;
-        margin-left: -5px;
-        width: 20px;
-        height: 20px; 
+        width: 20px; /* Adjusted image size for mobile */
+        height: 20px; /* Adjusted image size for mobile */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
+    .footer .username-container:hover {
+        background-color: #404D28;
+        color: white;
     }
 }

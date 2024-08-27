@@ -13,6 +13,10 @@ body {
     border-right: 1px solid white;
 }
 
+.sidetop img{
+    display: none;
+}
+
 .sidebar p {
     color: white;
     margin: 0;
@@ -93,7 +97,7 @@ body {
     background-color: white;
     border: 1px solid #404D28;
     border-radius: 30px;
-    height: 40px;
+    height: 7%;
     width: 70%;
     display: flex;
     align-items: center;
@@ -106,7 +110,7 @@ body {
     outline: none;
     width: 90%;
     height: 100%;
-    font-size: 14px;
+    font-size: 15px;
     color: #404D28;
     background-color: transparent;
     margin-left: -15px;
@@ -188,6 +192,7 @@ body {
     height: auto; /* Allow the content to determine the height */
     word-spacing: 0.1em;
     font-size: 14px;
+    resize: none;
 }
 
 
@@ -252,7 +257,8 @@ body {
     border: 1px solid #404D28;
     padding: 10px;
     border-radius: 5px;
-    font-size: 15px; 
+    font-size: 15px;
+    resize: none; 
 }
 
 .button-container {
@@ -408,9 +414,9 @@ body.dark-mode #noteModal textarea {
 
 /* Dark mode for buttons */
 body.dark-mode #noteModal button {
-    background-color: #4a4a4a; /* Dark mode background for buttons */
+    background-color: #667C3E; /* Dark mode background for buttons */
     color: #e0e0e0; /* Dark mode text color */
-    border-color: #555555; /* Adjust border color for dark mode */
+    border-color: #404D28; /* Adjust border color for dark mode */
 }
 
 body.dark-mode .search-container {
@@ -481,7 +487,7 @@ body.dark-mode .note-timestamp {
     
         .search-container {
             width: 70%;
-            height: 80px;
+            height: 6%;
             display: flex;
             align-items: center;
             justify-content: flex-start; /* Aligns the input to the start (left) */
@@ -492,7 +498,7 @@ body.dark-mode .note-timestamp {
         .search-input {
             width: 80%;
             height: 100%;
-            font-size: 15px;
+            font-size: 13px;
             display: flex;
             align-items: center;
             margin-left: 2px;
@@ -582,9 +588,13 @@ body.dark-mode .note-timestamp {
         .note-content {
             flex-grow: 1;
             color: #667C3E;
-            overflow: auto; /* Allow scrolling if content overflows */
-            word-wrap: break-word; /* Wrap long words to prevent horizontal scrolling */
-            white-space: pre-wrap; /* Preserve whitespace and line breaks */
+            overflow: hidden; /* Hide overflowing content */
+            text-overflow: ellipsis; /* Apply ellipsis when text overflows */
+            display: -webkit-box; /* Enable the use of -webkit-line-clamp */
+            -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+            -webkit-line-clamp: 8; /* Limit the number of lines before applying ellipsis */
+            line-clamp: 3;
+            word-wrap: break-word; /* Ensure long words break correctly */
         }
         
         .note-content strong {
@@ -675,6 +685,7 @@ body.dark-mode .note-timestamp {
         width: 111.9px; /* Keep the width same */
         background-color: #667C3E;
         position: fixed;
+        width: 40px;
         height: 100%;
         padding-top: 20px;
         border-right: 1px solid white;
@@ -682,34 +693,65 @@ body.dark-mode .note-timestamp {
     }
 
     .sidebar p {
-        color: white;
-        text-align: center;
-        margin: 10px 0px 30px 0px;
-        font-family: 'Jomhuria', cursive;
-        font-size: 30px; /* Adjusted font size for mobile */
+        display: none;
     }
 
-    .sidebar a {    
+    .sidetop{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 35px;
+        margin-bottom: 50px;
+    }
+
+    .sidetop img{
+        display: flex;
+        width: 40px; /* Adjusted image size for mobile */
+        height: 40px; /* Adjusted image size for mobile */
+        margin: 0;
+    }
+
+    .sidemid {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 90%;
+        height: 70%;
+    }
+        
+    .sidemid img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        
+    }
+
+    .sidemid a {    
         padding: 7px 10px;
         text-decoration: none;
-        font-size: 14px; /* Adjusted font size for mobile */
+        font-size: 14px;
         color: white;
         display: flex;
         align-items: center;
+        justify-content: center;
+        width: 75%;
     }
 
-    .sidebar a:hover {
+    .sidemid span {
+        display: none;
+    }
+
+    .sidemid a:hover {
         background-color: #7F9973;
     }
 
-    .sidebar img {
-        margin-right: 10px;
-        width: 25px; /* Adjusted image size for mobile */
-        height: 25px; /* Adjusted image size for mobile */
-    }
-
     .content {
-        margin-left: 110px;
+        margin-left: 40px;
         padding: 10px;
         font-size: 14px;
         background-color: #F5F5F5;
@@ -722,7 +764,7 @@ body.dark-mode .note-timestamp {
         max-width: 100%;
         overflow-x: hidden;
         box-sizing: border-box;
-        width: calc(100% - 110px);
+        width: calc(100% - 40px);
     }
 
     .content p {
@@ -736,7 +778,7 @@ body.dark-mode .note-timestamp {
 
     .search-container {
         width: 70%;
-        height: 6%;
+        height: 5%;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -747,7 +789,7 @@ body.dark-mode .note-timestamp {
     .search-input {
         width: 80%;
         height: 100%;
-        font-size: 13px;
+        font-size: 11px;
         display: flex;
         align-items: center;
         margin-left: 2px;
@@ -760,8 +802,8 @@ body.dark-mode .note-timestamp {
 
     .add-button {
         position: absolute;
-        bottom: 20px;
-        right: 10px;
+        bottom: 15px;
+        right: 20px;
         background-color: #66723b;
         color: white;
         border: none;
@@ -797,18 +839,21 @@ body.dark-mode .note-timestamp {
         display: flex;
         align-items: center;
         color: #667C3E;
-        width: 180%; /* Full width for mobile view */
-        font-size: 11px;
+        width: 0.5px;
+        font-size:15px;
         margin-bottom: -4.5px;
-        margin-left: -8px;
-        padding: 6px 17px;
+        margin-left: -9.5px;
+        padding: 6px 17px;  
     }
 
     .footer .username-container img {
-        margin-left: -7px;
+        margin-left: 7px;
         margin-right: 6px;
         width: 20px; /* Adjusted image size for mobile */
         height: 20px; /* Adjusted image size for mobile */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .footer .username-container:hover {
@@ -844,9 +889,13 @@ body.dark-mode .note-timestamp {
     .note-content {
         flex-grow: 1;
         color: #667C3E;
-        overflow: auto; /* Allow scrolling if content overflows */
-        word-wrap: break-word; /* Wrap long words to prevent horizontal scrolling */
-        white-space: pre-wrap; /* Preserve whitespace and line breaks */
+        overflow: hidden; /* Hide overflowing content */
+        text-overflow: ellipsis; /* Apply ellipsis when text overflows */
+        display: -webkit-box; /* Enable the use of -webkit-line-clamp */
+        -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+        -webkit-line-clamp: 8; /* Limit the number of lines before applying ellipsis */
+        line-clamp: 3;
+        word-wrap: break-word; /* Ensure long words break correctly */
     }
     
     .note-content strong {
@@ -883,12 +932,12 @@ body.dark-mode .note-timestamp {
         background-color: #fff;
         padding: 20px;
         border-radius: 5px;
-        width: 50%;
-        height: auto; /* Adjust height to fit content */
+        height: auto;
         max-height: 60%;
-        overflow: hidden; /* Prevent scrolling */
+        width: 80% !important; /* Force the width change */
+        overflow: hidden;
         display: flex;
-        flex-direction: column; /* Ensure elements stack vertically */
+        flex-direction: column;
     }
     
     #noteModal input {
@@ -921,6 +970,16 @@ body.dark-mode .note-timestamp {
         cursor: pointer;
         font-size: 13px;
         margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #noteModal #cancelNote {
+        display: flex;
+        width: 55px;
+        background-color: #f44336; /* Red background for cancel button */
+        color: white; /* White text color for better contrast */
+        border-color: #d32f2f; /* Darker border for cancel button */
     }
 
 }

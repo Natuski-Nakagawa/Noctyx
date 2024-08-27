@@ -19,25 +19,34 @@ if (!isset($_SESSION['user_id'])) {
     <script src="../../server/script/script.js" defer></script> <!-- Include the script.js script -->
 </head>
 <body class="<?php echo isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark' ? 'dark-mode' : ''; ?>">
-    <div class="sidebar">
-        <p>Noctyx</p>
-        <a href="../pages/homemenu.php">
-            <img src="../assets/homeicon.png" alt="Home Icon">
-            Home
-        </a>
-        <a href="../pages/trashmenu.php" style="background-color: #404D28;">
-            <img src="../assets/trashicon.png" alt="Trash Icon">
-            Trash
-        </a>
-        <a href="../pages/settings.php">
-            <img src="../assets/settingsicon.png" alt="Settings Icon">
-            Settings
-        </a>
-        <div class="footer">
-            <a href="#username" class="username-container">
-                <img src="../assets/user.png" alt="Username Icon">
-                Username
+<div class="sidebar">
+        
+        <div class="sidetop">
+            <img src ="../assets/icon.png">
+            <p>Noctyx</p>
+        </div>
+            
+        <div class="sidemid">
+            <a href="../pages/homemenu.php">
+                <img src="../assets/homeicon.png" alt="Home Icon">
+                <span>Home</span>
             </a>
+
+            <a href="../pages/trashmenu.php" style="background-color: #404D28;">
+                <img src="../assets/trashicon.png" alt="Trash Icon">
+                <span>Trash</span>
+            </a>
+
+            <a href="../pages/settings.php">
+                <img src="../assets/settingsicon.png" alt="Settings Icon">
+                <span>Settings</span>
+            </a>
+                <div class="footer">
+                    <a href="#username" class="username-container">
+                        <img src="../assets/user.png" alt="Username Icon">
+                        <span>Username</span>
+                    </a>
+                </div>
         </div>
     </div>
 
