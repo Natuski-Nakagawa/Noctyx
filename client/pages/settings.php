@@ -18,25 +18,34 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="../../server/style/settings.css">
 </head>
 <body class="<?php echo isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark' ? 'dark-mode' : ''; ?>">
-    <div class="sidebar">
-        <p>Noctyx</p>
-        <a href="../pages/homemenu.php">
-            <img src="../assets/homeicon.png" alt="Home Icon"> <!-- Home icon -->
-            Home
-        </a>
-        <a href="../pages/trashmenu.php">
-            <img src="../assets/trashicon.png" alt="Trash Icon"> <!-- Trash icon -->
-            Trash
-        </a>
-        <a href="#settings" style="background-color: #404D28;">
-            <img src="../assets/settingsicon.png" alt="Settings Icon"> <!-- Settings icon -->
-            Settings
-        </a>
-        <div class="footer">
-            <a href="#username" class="username-container">
-                <img src="../assets/user.png" alt="Username Icon"> <!-- Username icon -->
-                Username
+<div class="sidebar">
+        
+        <div class="sidetop">
+            <img src ="../assets/icon.png">
+            <p>Noctyx</p>
+        </div>
+            
+        <div class="sidemid">
+            <a href="../pages/homemenu.php">
+                <img src="../assets/homeicon.png" alt="Home Icon">
+                <span>Home</span>
             </a>
+
+            <a href="../pages/trashmenu.php">
+                <img src="../assets/trashicon.png" alt="Trash Icon">
+                <span>Trash</span>
+            </a>
+
+            <a href="../pages/settings.php" style="background-color: #404D28;">
+                <img src="../assets/settingsicon.png" alt="Settings Icon">
+                <span>Settings</span>
+            </a>
+                <div class="footer">
+                    <a href="#username" class="username-container">
+                        <img src="../assets/user.png" alt="Username Icon">
+                        <span>Username</span>
+                    </a>
+                </div>
         </div>
     </div>
 
