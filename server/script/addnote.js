@@ -163,9 +163,15 @@ document.getElementById('saveNote').addEventListener('click', function() {
     });
 });
 
+// Cancel editing a note
+document.getElementById('cancelNote').addEventListener('click', function() {
+    closeModal();
+});
+
+// Keep modal open when clicking outside
 window.onclick = function(event) {
     if (event.target === document.getElementById('noteModal')) {
-        closeModal();
+        // Do nothing, to keep the modal open
     }
 }
 

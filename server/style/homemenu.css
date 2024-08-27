@@ -175,7 +175,7 @@ body {
 
 .note-content {
     flex-grow: 1;
-    color: #667C3E;
+    color: rgba(102, 124, 62, 0.63);
     overflow: hidden; /* Hide overflowing content */
     text-overflow: ellipsis; /* Apply ellipsis when text overflows */
     display: -webkit-box; /* Enable the use of -webkit-line-clamp */
@@ -184,14 +184,16 @@ body {
     line-clamp: 3;
     word-wrap: break-word; /* Ensure long words break correctly */
     line-height: 1.2; /* Adjust line height to control spacing between lines */
-    max-height: 10em; /* Control maximum height based on the number of lines */
+    max-height: 10.3em; /* Control maximum height based on the number of lines */
     height: auto; /* Allow the content to determine the height */
     word-spacing: 0.1em;
+    font-size: 14px;
 }
 
 
 
 .note-content strong {
+    color: #667C3E;
     display: block; /* Makes the title a block element */
     font-size: 20px; /* Font size for the title, adjust as needed */
     font-weight: bold; /* Make the title bold */
@@ -272,10 +274,17 @@ body {
 }
 
 #noteModal #cancelNote {
+    display: flex;
+    width:8%;
     background-color: #f44336; /* Red background for cancel button */
     color: white; /* White text color for better contrast */
     border-color: #d32f2f; /* Darker border for cancel button */
 }
+    
+    #cancelNote {
+
+    }
+
 
 /* Dark Mode Styles */
 body.dark-mode {
@@ -362,26 +371,6 @@ body.dark-mode .note {
     color: #e0e0e0; /* Dark mode text color */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Darker shadow for dark mode */
 }
-
-body.dark-mode .note-footer {
-    display: flex;
-    justify-content: space-between; /* Space out timestamp and icons */
-    align-items: center; /* Center items vertically */
-    margin-top: 10px; /* Space above the footer */
-}
-
-body.dark-mode .note-timestamp {
-    font-size: 0.71em; /* Adjust font size if needed */
-    color: #d8d8d8; /* Adjust color if needed */
-}
-
-body.dark-mode .note-icons img {
-    width: 20px; /* Adjust icon size if needed */
-    height: 20px;
-    margin-left: 10px; /* Space between icons */
-    cursor: pointer; /* Add a pointer cursor for clickable icons */
-}
-
 
 /* Dark mode for note content */
 body.dark-mode .note-content {
