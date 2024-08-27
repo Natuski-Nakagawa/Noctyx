@@ -81,7 +81,6 @@ if (!isset($_SESSION['user_id'])) {
 
         </div>
 
-        <!-- Confirmation Overlay -->
         <div id="deleteConfirmationOverlay" class="deloverlay">
             <div class="del-overlay-content">
                 <p>Are you sure you want to delete this note?</p>
