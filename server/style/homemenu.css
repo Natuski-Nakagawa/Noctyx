@@ -285,7 +285,9 @@ body {
     background-color: #f44336; /* Red background for cancel button */
     color: white; /* White text color for better contrast */
     border-color: #d32f2f; /* Darker border for cancel button */
+    justify-content: center;
 }
+
 
 
 /* Dark Mode Styles */

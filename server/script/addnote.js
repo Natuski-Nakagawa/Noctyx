@@ -9,8 +9,25 @@ function closeModal() {
     document.getElementById('noteModal').style.display = 'none';
     document.getElementById('noteTitle').value = '';
     document.getElementById('noteContent').value = '';
+    document.getElementById('noteTitle').readOnly = false;
+    document.getElementById('noteContent').readOnly = false;
     isEditing = false;
     editIndex = null;
+    document.getElementById('saveNote').style.display = 'inline-block';
+    document.getElementById('cancelNote').textContent = 'Cancel';
+}
+
+function openViewMode(title, content, ndate) {
+    document.getElementById('noteTitle').value = title;
+    document.getElementById('noteContent').value = content;
+    document.getElementById('noteTitle').readOnly = true;
+    document.getElementById('noteContent').readOnly = true;
+    openModal();
+    document.getElementById('saveNote').style.display = 'none';
+    document.getElementById('cancelNote').textContent = 'Close';
+    document.getElementById('cancelNote').addEventListener('click', function() {
+        closeModal();
+    }, { once: true }); // Ensure the event listener is removed after click
 }
 
 function createNoteElement(id, title, content, ndate) {
@@ -24,6 +41,11 @@ function createNoteElement(id, title, content, ndate) {
     const formattedContent = content.replace(/\n/g, '<br>');
     noteContent.innerHTML = `<strong>${title}</strong><br>${formattedContent}`;
     note.appendChild(noteContent);
+
+    // Add click event to open note in view mode
+    note.addEventListener('click', function() {
+        openViewMode(title, content, ndate);
+    });
 
     // Create a wrapper for timestamp and icons
     const noteFooter = document.createElement('div');
@@ -40,7 +62,8 @@ function createNoteElement(id, title, content, ndate) {
     const editIcon = document.createElement('img');
     editIcon.src = '../assets/edit-icon.png';
     editIcon.alt = 'Edit';
-    editIcon.addEventListener('click', function() {
+    editIcon.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent the click event from propagating to the note
         document.getElementById('noteTitle').value = title;
         document.getElementById('noteContent').value = content;
         openModal();
@@ -52,7 +75,8 @@ function createNoteElement(id, title, content, ndate) {
     const deleteIcon = document.createElement('img');
     deleteIcon.src = '../assets/delete-icon.png';
     deleteIcon.alt = 'Delete';
-    deleteIcon.addEventListener('click', function() {
+    deleteIcon.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent the click event from propagating to the note
         // Show the confirmation overlay
         const overlay = document.getElementById('deleteConfirmationOverlay');
         overlay.style.display = 'flex';
@@ -90,7 +114,6 @@ function createNoteElement(id, title, content, ndate) {
             overlay.style.display = 'none';
         };
     });
-
     noteIcons.appendChild(deleteIcon);
 
     // Append noteIcons and noteTimestamp to noteFooter, and noteFooter to note
@@ -99,6 +122,8 @@ function createNoteElement(id, title, content, ndate) {
 
     // Append the note to the container
     document.getElementById('noteContainer').appendChild(note);
+
+    checkNoNotes();
 }
 
 function checkNoNotes() {
@@ -168,7 +193,7 @@ document.getElementById('cancelNote').addEventListener('click', function() {
     closeModal();
 });
 
-// Keep modal open when clicking outside
+// Prevent closing the modal when clicking outside (if that's the desired behavior)
 window.onclick = function(event) {
     if (event.target === document.getElementById('noteModal')) {
         // Do nothing, to keep the modal open
