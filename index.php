@@ -3,8 +3,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/noctyx/server/style/signup.css">
-    <link href="/noctyx/server/style/overlay.css" rel="stylesheet">
+    <link rel="stylesheet" href="/server/style/signup.css">
+    <link href="/server/style/overlay.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -14,12 +14,12 @@
         <div class="left">
             <div class="lefttop">
                 <div class="arrow-con">
-                    <div class="arrow left-arrow" ><a href="noctyx/client/pages/login.php"><i class="fas fa-arrow-left"></i>
+                    <div class="arrow left-arrow" ><a href="client/pages/login.php"><i class="fas fa-arrow-left"></i>
                     </a></div>
                 </div>
             </div>
             <div class="leftbot">
-                <img src="noctyx/client/assets/logo.png" alt="">
+                <img src="client/assets/logo.png" alt="">
             </div>
         </div>
         <div class="right">
