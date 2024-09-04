@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database/dbcon.php';
+include '/server/database/dbcon.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
@@ -17,17 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Set session variables
         $_SESSION['user_id'] = $user['user_id'];
         $success = "Log in successful";
-        header("Location: /noctyx/client/pages/homemenu.php?". urlencode($success));
+        header("Location: /client/pages/homemenu.php?". urlencode($success));
         echo "Login successful";
     } else {
         $error = "Invalid username or password";
-        header("Location: /noctyx/client/pages/login.php?error=". urlencode($error));
+        header("Location: /client/pages/login.php?error=". urlencode($error));
         echo "Invalid username or password";
     }
 
     } else {
         $error = "There is no such user";
-        header("Location: /noctyx/client/pages/login.php?error=". urlencode($error));
+        header("Location: /client/pages/login.php?error=". urlencode($error));
         echo "There is no such user";
     }
     $stmt->close();
