@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -40,12 +40,12 @@
                                 <button type="submit">Log in</button>
                             </div>
                             <div class="leftbut">
-                            <button type="button" onclick="window.location.href='/Noctyx/index.php';">Sign up</button>
+                            <button type="button" onclick="window.location.href='http://192.168.0.209:8888/';">Sign up</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                
+
             </div>
         </div>
         <div class="right">
@@ -66,7 +66,7 @@
     </div>
 
     <script src="../../server/script/notif.js">
-        
+
     </script>  `
 </body>
 </html>

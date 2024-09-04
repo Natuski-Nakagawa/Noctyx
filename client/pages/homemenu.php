@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '/xampp/htdocs/Noctyx/server/database/dbcon.php';
+include '/var/www/html/noctyx/server/database/dbcon.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("location: /noctyx/client/pages/login.php");
@@ -24,12 +24,12 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body class="<?php echo isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark' ? 'dark-mode' : ''; ?>">
     <div class="sidebar">
-        
+
         <div class="sidetop">
             <img src ="../assets/icon.png">
             <p>Noctyx</p>
         </div>
-            
+
         <div class="sidemid">
             <a href="../pages/homemenu.php" style="background-color: #404D28;">
                 <img src="../assets/homeicon.png" alt="Home Icon">
@@ -58,7 +58,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="search-container">
         <input type="text" class="search-input" placeholder="Search your notes" oninput="searchNotes()">
     </div>
-        
+
                 <div id="noNotes" class="no-notes">
                     <img src="../assets/no-notes.png" alt="No Notes Icon">
                     <p>No notes</p>

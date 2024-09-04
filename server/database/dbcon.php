@@ -1,7 +1,7 @@
 <?php
-$servername = "localhost"; // or your database server address
+$servername = "db"; // or your database server address
 $username = "root"; // your database username
-$password = ""; // your database password
+$password = "comfac123"; // your database password
 $dbname = "noctyx"; // your database name
 
 // Create connection

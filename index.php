@@ -1,28 +1,27 @@
-<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../Noctyx/server/style/signup.css">
-    <link href="server/style/overlay.css" rel="stylesheet">
+    <link rel="stylesheet" href="/noctyx/server/style/signup.css">
+    <link href="/noctyx/server/style/overlay.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
 </head>
 <body>
     <div class="container">
         <div class="left">
             <div class="lefttop">
                 <div class="arrow-con">
-                    <div class="arrow left-arrow" ><a href="./client/pages/login.php"><i class="fas fa-arrow-left"></i>
+                    <div class="arrow left-arrow" ><a href="noctyx/client/pages/login.php"><i class="fas fa-arrow-left"></i>
                     </a></div>
                 </div>
             </div>
             <div class="leftbot">
-                <img src="./client/assets/logo.png" alt="">
+                <img src="noctyx/client/assets/logo.png" alt="">
             </div>
-        </div>  
+        </div>
         <div class="right">
             <div class="inner-right">
                 <div class="headering">
@@ -32,7 +31,7 @@
                     </div>
                     <p>Sign Up</p>
                 </div>
-                
+
                 <form action="./server/php/signup.php" method="post">
                     <div class="form-group">
                         <div class="form-groupright">
@@ -62,24 +61,24 @@
                             <input type="password" id="pass" name="password" placeholder="Enter your password" required>
                         </div>
                     </div>
-                    
+
                     <div class="form-group2">
                         <button type="submit">Sign up</button>
                     </div>
                 </form>
             </div>
 
-        </div>  
-    </div>    
+        </div>
+    </div>
     <div id="overlay" class="overlay">
     <div class="popup">
             <p id="errorMessage">Sign-up was successful! You can now log in.</p>
         </div>
     </div>
-    
+
 
     <script src="./server/script/notif.js">
-        
+
     </script>
 </body>
 </html>
