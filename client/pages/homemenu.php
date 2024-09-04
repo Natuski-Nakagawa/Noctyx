@@ -3,7 +3,7 @@ session_start();
 include '../database/dbcon.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("location: /noctyx/client/pages/login.php");
+    header("location: /client/pages/login.php");
     exit();
 }
 ?>
