@@ -175,6 +175,7 @@ body {
     justify-content: space-between;
     align-items: stretch;
     height: 200px; /* Increased height */
+    cursor: pointer;
 }
 
 .note-content {
@@ -286,6 +287,10 @@ body {
     color: white; /* White text color for better contrast */
     border-color: #d32f2f; /* Darker border for cancel button */
     justify-content: center;
+}
+
+.custom-alert-content{
+    color: black;
 }
 
 
