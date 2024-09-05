@@ -2,22 +2,20 @@ services:
   - name: noctyx-web
     type: web
     env: docker
-    plan: standard
-    dockerImage: rbquerubin/noctyx:v3  # Corrected the image field
+    image: rbquerubin/noctyx:v3  # Correct the image field
     autoDeploy: true
     envVars:
       - key: PMA_HOST
         value: db
       - key: MYSQL_ROOT_PASSWORD
         value: comfac123
-    port: 80  # Corrected the port field
-    startCommand: ""  # Optional: Leave this blank if the web service starts automatically
+    ports:
+      - 80  # Use only the port number without 'port:' prefix
 
   - name: noctyx-db
-    type: web  # Using type 'web' for MySQL container as well
+    type: web  # 'web' type for database container as well
     env: docker
-    plan: standard
-    dockerImage: rbquerubin/noctyx-mysql:v3  # Corrected the image field
+    image: rbquerubin/noctyx-mysql:v3  # Correct the image field
     autoDeploy: true
     envVars:
       - key: MYSQL_DATABASE
@@ -25,19 +23,18 @@ services:
       - key: MYSQL_ROOT_PASSWORD
         value: comfac123
     disk:
-      sizeGB: 10  # Added disk space for MySQL data storage
-    startCommand: ""  # MySQL service starts automatically
+      sizeGB: 10  # Allocate disk space for MySQL data
+    startCommand: ""  # Optional: Leave blank if service starts automatically
 
   - name: noctyx-phpmyadmin
     type: web
     env: docker
-    plan: standard
-    dockerImage: rbquerubin/noctyx-php:v3  # Corrected the image field
+    image: rbquerubin/noctyx-php:v3  # Correct the image field
     autoDeploy: true
     envVars:
       - key: PMA_HOST
         value: db
       - key: MYSQL_ROOT_PASSWORD
         value: comfac123
-    port: 8080  # Corrected the port field
-    startCommand: ""  # phpMyAdmin starts automatically
+    ports:
+      - 8080  # Use only the port number
