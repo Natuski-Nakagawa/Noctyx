@@ -40,7 +40,7 @@
                                 <button type="submit">Log in</button>
                             </div>
                             <div class="leftbut">
-                            <button type="button" onclick="window.location.href='http://192.168.0.209:8888/';">Sign up</button>
+                            <button type="button" onclick="window.location.href='https://noctyx-web.onrender.com/';">Sign up</button>
                             </div>
                         </div>
                     </form>
