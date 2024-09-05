@@ -6,7 +6,7 @@ services:
     plan: free # Adjust based on your preferred plan
     region: oregon # Change region if necessary
     docker:
-      image: rbquerubin/noctyx:latest # Correctly nested under docker
+      image: rbquerubin/noctyx:v3 # Correctly nested under docker
     envVars:
       - key: MYSQL_HOST
         value: noctyx-mysql
@@ -27,7 +27,7 @@ services:
     plan: free
     region: oregon
     docker:
-      image: rbquerubin/noctyx-php:latest # Correctly nested under docker
+      image: rbquerubin/noctyx-php:v3 # Correctly nested under docker
     envVars:
       - key: PMA_HOST
         value: noctyx-mysql
@@ -46,7 +46,7 @@ services:
     plan: free
     region: oregon
     docker:
-      image: rbquerubin/noctyx-mysql:latest # Correctly nested under docker
+      image: rbquerubin/noctyx-mysql:v3 # Correctly nested under docker
     envVars:
       - key: MYSQL_ROOT_PASSWORD
         value: comfac123
