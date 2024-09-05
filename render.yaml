@@ -3,30 +3,29 @@ services:
   - type: web
     name: noctyx-web
     env: docker
-    plan: free # Adjust this based on your preferred plan
-    region: oregon # Change the region if needed
-    docker:
-      image: rbquerubin/noctyx:latest
+    plan: free # Adjust based on your preferred plan
+    region: oregon # Change region if necessary
+    image: rbquerubin/noctyx:latest
     envVars:
       - key: MYSQL_HOST
-        value: noctyx-mysql # Name of the MySQL service for internal connection
+        value: noctyx-mysql
       - key: MYSQL_DATABASE
         value: noctyx
       - key: MYSQL_USER
         value: root
       - key: MYSQL_PASSWORD
         value: comfac123
-    ports:
-      - port: 80
-        targetPort: 8888
+    disk:
+      sizeGB: 1 # Adjust storage size if needed
+    healthCheckPath: "/"
+    autoDeploy: true
 
   - type: web
     name: noctyx-phpmyadmin
     env: docker
     plan: free
     region: oregon
-    docker:
-      image: rbquerubin/noctyx-php:latest
+    image: rbquerubin/noctyx-php:latest
     envVars:
       - key: PMA_HOST
         value: noctyx-mysql
@@ -34,22 +33,23 @@ services:
         value: root
       - key: PMA_PASSWORD
         value: comfac123
-    ports:
-      - port: 8080
-        targetPort: 80
+    disk:
+      sizeGB: 1 # Adjust storage size if needed
+    healthCheckPath: "/"
+    autoDeploy: true
 
   - type: web
     name: noctyx-mysql
     env: docker
     plan: free
     region: oregon
-    docker:
-      image: rbquerubin/noctyx-mysql:latest
+    image: rbquerubin/noctyx-mysql:latest
     envVars:
       - key: MYSQL_ROOT_PASSWORD
         value: comfac123
       - key: MYSQL_DATABASE
         value: noctyx
-    ports:
-      - port: 3306
-        targetPort: 3306
+    disk:
+      sizeGB: 1 # Adjust storage size if needed
+    healthCheckPath: "/"
+    autoDeploy: true
