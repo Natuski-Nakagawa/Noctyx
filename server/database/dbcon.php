@@ -7,11 +7,12 @@ $user = "myappuser";
 $password = "ZDfgGV5CIf4o2jf9xqYu3s11yWq7iUHE";
 
 // Create connection
-$conn_string = "host=$host port=$port dbname=$dbname user=$user password=$password";
-$conn = pg_connect($conn_string);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . pg_last_error());
+$dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
+try {
+    $conn = new PDO($dsn, $user, $password);
+    // Set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
 ?>
