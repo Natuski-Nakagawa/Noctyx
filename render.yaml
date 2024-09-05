@@ -14,7 +14,7 @@ services:
     startCommand: ""  # Optional: Leave this blank if the web service starts automatically
 
   - name: noctyx-db
-    type: managed
+    type: web  # Change 'managed' to 'web' but don't expose any ports for the database
     env: docker
     image: rbquerubin/noctyx-mysql:v3  # Your MySQL image from Docker Hub
     autoDeploy: true
@@ -26,9 +26,7 @@ services:
     volumes:
       - name: db_data
         mountPath: /var/lib/mysql
-    ports:
-      - port: 3306  # MySQL default port
-    startCommand: ""  # Optional: MySQL service starts automatically
+    startCommand: ""  # MySQL service starts automatically
 
   - name: noctyx-phpmyadmin
     type: web
@@ -42,7 +40,7 @@ services:
         value: comfac123
     ports:
       - port: 8080  # Expose phpMyAdmin on port 8080
-    startCommand: ""  # Optional: phpMyAdmin starts automatically
+    startCommand: ""  # phpMyAdmin starts automatically
 
 volumes:
   - name: db_data
