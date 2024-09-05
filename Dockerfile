@@ -1,7 +1,7 @@
 FROM php:7.4-apache
 
 # Install necessary PHP extensions
-RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install mysqli pdo pdo_mysql pgsql pdo_pgsql
 
 # Set the ServerName to avoid Apache warnings
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
