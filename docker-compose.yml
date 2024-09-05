@@ -4,7 +4,7 @@ services:
   web:
     image: noctyx:v1.1
     ports:
-      - "8888:8888"
+      - "80:8888"
     volumes:
       - .:/var/www/html
     depends_on:
@@ -23,7 +23,7 @@ services:
     networks:
       - noctyx-net
     ports:
-      - "3338:3306"  # Change the host port to avoid conflict
+      - "3306:3306"  # Change the host port to avoid conflict
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest # You can change this image if you want something unique
@@ -32,7 +32,7 @@ services:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: comfac123
     ports:
-      - "8889:80"  # Access phpMyAdmin on port
+      - "8080:80"  # Access phpMyAdmin on port
     networks:
       - noctyx-net
 
