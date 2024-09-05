@@ -8,11 +8,11 @@ services:
     volumes:
       - .:/var/www/html
     depends_on:
-      - db
+      - mysql
     networks:
       - noctyx-net
 
-  db:
+  mysql:
     image: mysql:5.7
     restart: always
     environment:
@@ -29,7 +29,7 @@ services:
     image: phpmyadmin/phpmyadmin:latest # You can change this image if you want something unique
     restart: always
     environment:
-      PMA_HOST: db
+      PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: comfac123
     ports:
       - "8080:80"  # Access phpMyAdmin on port
@@ -41,4 +41,5 @@ volumes:
 
 networks:
   noctyx-net:
+  driver: bridge
 
