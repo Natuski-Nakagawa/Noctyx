@@ -1,14 +1,17 @@
 <?php
-$servername = "mysql"; // or your database server address
-$username = "root"; // your database username
-$password = "comfac123"; // your database password
-$dbname = "noctyx"; // your database name
+// Connection details
+$host = "dpg-crck5dbv2p9s73chab70-a";
+$port = "5432";
+$dbname = "myappdb_uaco";
+$user = "myappuser";
+$password = "ZDfgGV5CIf4o2jf9xqYu3s11yWq7iUHE";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn_string = "host=$host port=$port dbname=$dbname user=$user password=$password";
+$conn = pg_connect($conn_string);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("Connection failed: " . pg_last_error());
 }
 ?>
