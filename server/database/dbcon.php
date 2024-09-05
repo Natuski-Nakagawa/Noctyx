@@ -1,5 +1,5 @@
 <?php
-$servername = "db"; // or your database server address
+$servername = "mysql"; // or your database server address
 $username = "root"; // your database username
 $password = "comfac123"; // your database password
 $dbname = "noctyx"; // your database name
