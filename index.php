@@ -32,7 +32,7 @@
                     <p>Sign Up</p>
                 </div>
 
-                <form action="./server/php/signup.php" method="post">
+                <form action="/server/php/signup.php" method="post">
                     <div class="form-group">
                         <div class="form-groupright">
                             <label for="fname">Firstname:</label>
