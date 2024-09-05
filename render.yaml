@@ -1,0 +1,50 @@
+services:
+  - name: noctyx-web
+    type: web
+    env: docker
+    image: rbquerubin/noctyx:v3  # Specify your image from Docker Hub
+    autoDeploy: true
+    envVars:
+      - key: PMA_HOST
+        value: db
+      - key: MYSQL_ROOT_PASSWORD
+        value: comfac123
+    ports:
+      - port: 80  # Render will map the exposed port (80) to your internal web app
+    startCommand: ""  # Optional: Leave this blank if the web service starts automatically
+
+  - name: noctyx-db
+    type: managed
+    env: docker
+    image: rbquerubin/noctyx-mysql:v3  # Your MySQL image from Docker Hub
+    autoDeploy: true
+    envVars:
+      - key: MYSQL_DATABASE
+        value: noctyx
+      - key: MYSQL_ROOT_PASSWORD
+        value: comfac123
+    volumes:
+      - name: db_data
+        mountPath: /var/lib/mysql
+    ports:
+      - port: 3306  # MySQL default port
+    startCommand: ""  # Optional: MySQL service starts automatically
+
+  - name: noctyx-phpmyadmin
+    type: web
+    env: docker
+    image: rbquerubin/noctyx-php:v3  # phpMyAdmin image from Docker Hub
+    autoDeploy: true
+    envVars:
+      - key: PMA_HOST
+        value: db
+      - key: MYSQL_ROOT_PASSWORD
+        value: comfac123
+    ports:
+      - port: 8080  # Expose phpMyAdmin on port 8080
+    startCommand: ""  # Optional: phpMyAdmin starts automatically
+
+volumes:
+  - name: db_data
+    type: persistent
+    mountPath: /var/lib/mysql
