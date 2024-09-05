@@ -3,10 +3,10 @@ services:
   - type: web
     name: noctyx-web
     env: docker
-    plan: free # Adjust if you need a different plan
-    region: oregon # You can change this based on your preferred region
+    plan: free # Adjust this based on your preferred plan
+    region: oregon # Change the region if needed
     docker:
-      image: rbquerubin/noctyx:latest # The image from your registry
+      image: rbquerubin/noctyx:latest
     envVars:
       - key: MYSQL_HOST
         value: noctyx-mysql # Name of the MySQL service for internal connection
@@ -18,7 +18,7 @@ services:
         value: comfac123
     ports:
       - port: 80
-        targetPort: 8888 # Map port 80 to 8888 inside the container
+        targetPort: 8888
 
   - type: web
     name: noctyx-phpmyadmin
@@ -36,9 +36,9 @@ services:
         value: comfac123
     ports:
       - port: 8080
-        targetPort: 80 # phpMyAdmin accessible on port 8080
+        targetPort: 80
 
-  - type: privateService
+  - type: web
     name: noctyx-mysql
     env: docker
     plan: free
@@ -52,4 +52,4 @@ services:
         value: noctyx
     ports:
       - port: 3306
-        targetPort: 3306 # Internal MySQL connection port for the app and phpMyAdmin
+        targetPort: 3306
