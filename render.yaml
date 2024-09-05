@@ -1,40 +1,55 @@
+# render.yaml
 services:
-  - name: noctyx-web
-    type: web
+  - type: web
+    name: noctyx-web
     env: docker
-    image: rbquerubin/noctyx:v3  # Correct the image field
-    autoDeploy: true
+    plan: free # Adjust if you need a different plan
+    region: oregon # You can change this based on your preferred region
+    docker:
+      image: rbquerubin/noctyx:latest # The image from your registry
     envVars:
-      - key: PMA_HOST
-        value: db
-      - key: MYSQL_ROOT_PASSWORD
-        value: comfac123
-    ports:
-      - 80  # Use only the port number without 'port:' prefix
-
-  - name: noctyx-db
-    type: web  # 'web' type for database container as well
-    env: docker
-    image: rbquerubin/noctyx-mysql:v3  # Correct the image field
-    autoDeploy: true
-    envVars:
+      - key: MYSQL_HOST
+        value: noctyx-mysql # Name of the MySQL service for internal connection
       - key: MYSQL_DATABASE
         value: noctyx
-      - key: MYSQL_ROOT_PASSWORD
-        value: comfac123
-    disk:
-      sizeGB: 10  # Allocate disk space for MySQL data
-    startCommand: ""  # Optional: Leave blank if service starts automatically
-
-  - name: noctyx-phpmyadmin
-    type: web
-    env: docker
-    image: rbquerubin/noctyx-php:v3  # Correct the image field
-    autoDeploy: true
-    envVars:
-      - key: PMA_HOST
-        value: db
-      - key: MYSQL_ROOT_PASSWORD
+      - key: MYSQL_USER
+        value: root
+      - key: MYSQL_PASSWORD
         value: comfac123
     ports:
-      - 8080  # Use only the port number
+      - port: 80
+        targetPort: 8888 # Map port 80 to 8888 inside the container
+
+  - type: web
+    name: noctyx-phpmyadmin
+    env: docker
+    plan: free
+    region: oregon
+    docker:
+      image: rbquerubin/noctyx-php:latest
+    envVars:
+      - key: PMA_HOST
+        value: noctyx-mysql
+      - key: PMA_USER
+        value: root
+      - key: PMA_PASSWORD
+        value: comfac123
+    ports:
+      - port: 8080
+        targetPort: 80 # phpMyAdmin accessible on port 8080
+
+  - type: privateService
+    name: noctyx-mysql
+    env: docker
+    plan: free
+    region: oregon
+    docker:
+      image: rbquerubin/noctyx-mysql:latest
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        value: comfac123
+      - key: MYSQL_DATABASE
+        value: noctyx
+    ports:
+      - port: 3306
+        targetPort: 3306 # Internal MySQL connection port for the app and phpMyAdmin
