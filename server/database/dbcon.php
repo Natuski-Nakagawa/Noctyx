@@ -6,11 +6,8 @@ $dbname = "myappdb_uaco";
 $user = "myappuser";
 $password = "ZDfgGV5CIf4o2jf9xqYu3s11yWq7iUHE";
 
-// Create connection
-$dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
 try {
-    $conn = new PDO($dsn, $user, $password);
-    // Set the PDO error mode to exception
+    $conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
