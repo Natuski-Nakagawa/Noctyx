@@ -5,7 +5,7 @@ services:
     plan: free # Adjust based on your preferred plan
     region: oregon # Change region if necessary
     image:
-      url: docker.io/rbquerubin/noctyx:v3 # Use "docker.io" prefix for Docker Hub images
+      url: docker.io/rbquerubin/noctyx:v3
     envVars:
       - key: MYSQL_HOST
         value: noctyx-mysql
@@ -15,8 +15,6 @@ services:
         value: root
       - key: MYSQL_PASSWORD
         value: comfac123
-    disk:
-      sizeGB: 1 # Adjust storage size if needed
     healthCheckPath: "/"
     autoDeploy: true
 
@@ -26,7 +24,7 @@ services:
     plan: free
     region: oregon
     image:
-      url: docker.io/rbquerubin/noctyx-php:v3 # Use "docker.io" prefix for Docker Hub images
+      url: docker.io/rbquerubin/noctyx-php:v3
     envVars:
       - key: PMA_HOST
         value: noctyx-mysql
@@ -34,8 +32,6 @@ services:
         value: root
       - key: PMA_PASSWORD
         value: comfac123
-    disk:
-      sizeGB: 1 # Adjust storage size if needed
     healthCheckPath: "/"
     autoDeploy: true
 
@@ -45,13 +41,11 @@ services:
     plan: free
     region: oregon
     image:
-      url: docker.io/rbquerubin/noctyx-mysql:v3 # Use "docker.io" prefix for Docker Hub images
+      url: docker.io/rbquerubin/noctyx-mysql:v3
     envVars:
       - key: MYSQL_ROOT_PASSWORD
         value: comfac123
       - key: MYSQL_DATABASE
         value: noctyx
-    disk:
-      sizeGB: 1 # Adjust storage size if needed
     healthCheckPath: "/"
     autoDeploy: true
