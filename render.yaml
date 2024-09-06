@@ -5,7 +5,7 @@ services:
     env: docker
     plan: free # Adjust based on your preferred plan
     region: oregon # Change region if necessary
-    image: rbquerubin/noctyx:v3 # Use image directly
+    image: noctyx:v3 # Use image directly
     envVars:
       - key: MYSQL_HOST
         value: noctyx-mysql
