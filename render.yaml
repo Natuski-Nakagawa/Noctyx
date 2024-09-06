@@ -1,11 +1,11 @@
-# render.yaml
 services:
   - type: web
     name: noctyx-web
     env: docker
     plan: free # Adjust based on your preferred plan
     region: oregon # Change region if necessary
-    image: noctyx:v3 # Use image directly
+    image:
+      url: docker.io/rbquerubin/noctyx:v3 # Use "docker.io" prefix for Docker Hub images
     envVars:
       - key: MYSQL_HOST
         value: noctyx-mysql
@@ -25,7 +25,8 @@ services:
     env: docker
     plan: free
     region: oregon
-    image: rbquerubin/noctyx-php:v3 # Use image directly
+    image:
+      url: docker.io/rbquerubin/noctyx-php:v3 # Use "docker.io" prefix for Docker Hub images
     envVars:
       - key: PMA_HOST
         value: noctyx-mysql
@@ -43,7 +44,8 @@ services:
     env: docker
     plan: free
     region: oregon
-    image: rbquerubin/noctyx-mysql:v3 # Use image directly
+    image:
+      url: docker.io/rbquerubin/noctyx-mysql:v3 # Use "docker.io" prefix for Docker Hub images
     envVars:
       - key: MYSQL_ROOT_PASSWORD
         value: comfac123
