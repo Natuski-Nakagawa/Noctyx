@@ -2,8 +2,8 @@ services:
   - type: web
     name: noctyx-web
     env: docker
-    plan: free # Adjust based on your preferred plan
-    region: oregon # Change region if necessary
+    plan: free
+    region: oregon
     image:
       url: docker.io/rbquerubin/noctyx:v3
     envVars:
