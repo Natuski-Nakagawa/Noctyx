@@ -1,5 +1,6 @@
 let isEditing = false;
 let editIndex = null;
+const MAX_CHARACTERS = 1000;
 
 function openModal() {
     document.getElementById('noteModal').style.display = 'flex';
@@ -9,8 +10,26 @@ function closeModal() {
     document.getElementById('noteModal').style.display = 'none';
     document.getElementById('noteTitle').value = '';
     document.getElementById('noteContent').value = '';
+    document.getElementById('noteTitle').readOnly = false;
+    document.getElementById('noteContent').readOnly = false;
     isEditing = false;
     editIndex = null;
+    document.getElementById('saveNote').style.display = 'inline-block';
+    document.getElementById('cancelNote').textContent = 'Cancel';
+}
+
+function openViewMode(title, content, ndate) {
+    document.getElementById('noteTitle').value = title;
+    const formattedContent = content.replace(/<br\s*\/?>/g, '\n');
+    document.getElementById('noteContent').value = formattedContent;
+    document.getElementById('noteTitle').readOnly = true;
+    document.getElementById('noteContent').readOnly = true;
+    openModal();
+    document.getElementById('saveNote').style.display = 'none';
+    document.getElementById('cancelNote').textContent = 'Close';
+    document.getElementById('cancelNote').addEventListener('click', function() {
+        closeModal();
+    }, { once: true }); // Ensure the event listener is removed after click
 }
 
 function createNoteElement(id, title, content, ndate) {
@@ -21,9 +40,14 @@ function createNoteElement(id, title, content, ndate) {
     const noteContent = document.createElement('div');
     noteContent.className = 'note-content';
 
-    const formattedContent = content.replace(/\n/g, '<br>');
+    const formattedContent = (content || '').replace(/(?:\r\n|\r|\n)/g, '<br>');
     noteContent.innerHTML = `<strong>${title}</strong><br>${formattedContent}`;
     note.appendChild(noteContent);
+
+    // Add click event to open note in view mode
+    note.addEventListener('click', function() {
+        openViewMode(title, content, ndate);
+    });
 
     // Create a wrapper for timestamp and icons
     const noteFooter = document.createElement('div');
@@ -40,9 +64,10 @@ function createNoteElement(id, title, content, ndate) {
     const editIcon = document.createElement('img');
     editIcon.src = '../assets/edit-icon.png';
     editIcon.alt = 'Edit';
-    editIcon.addEventListener('click', function() {
+    editIcon.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent the click event from propagating to the note
         document.getElementById('noteTitle').value = title;
-        document.getElementById('noteContent').value = content;
+        document.getElementById('noteContent').value = content.replace(/<br\s*\/?>/g, '\n');
         openModal();
         isEditing = true;
         editIndex = id;
@@ -52,7 +77,8 @@ function createNoteElement(id, title, content, ndate) {
     const deleteIcon = document.createElement('img');
     deleteIcon.src = '../assets/delete-icon.png';
     deleteIcon.alt = 'Delete';
-    deleteIcon.addEventListener('click', function() {
+    deleteIcon.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent the click event from propagating to the note
         // Show the confirmation overlay
         const overlay = document.getElementById('deleteConfirmationOverlay');
         overlay.style.display = 'flex';
@@ -90,7 +116,6 @@ function createNoteElement(id, title, content, ndate) {
             overlay.style.display = 'none';
         };
     });
-
     noteIcons.appendChild(deleteIcon);
 
     // Append noteIcons and noteTimestamp to noteFooter, and noteFooter to note
@@ -99,6 +124,8 @@ function createNoteElement(id, title, content, ndate) {
 
     // Append the note to the container
     document.getElementById('noteContainer').appendChild(note);
+
+    checkNoNotes();
 }
 
 function checkNoNotes() {
@@ -132,7 +159,9 @@ document.getElementById('saveNote').addEventListener('click', function() {
 
     const data = new FormData();
     data.append('title', title);
-    data.append('content', content);
+    const formattedContent = content.replace(/(?:\r\n|\r|\n)/g, '<br>');
+    data.append('content', formattedContent);
+
     if (isEditing) {
         data.append('editIndex', editIndex); // Pass the note ID to the server for updating
     }
@@ -153,6 +182,7 @@ document.getElementById('saveNote').addEventListener('click', function() {
             } else {
                 createNoteElement(editIndex, title, content, new Date().toISOString()); // Add the new note to the UI
             }
+            window.location.reload();
             closeModal();
         } else {
             showCustomAlert(data); // Display error message
@@ -168,14 +198,22 @@ document.getElementById('cancelNote').addEventListener('click', function() {
     closeModal();
 });
 
-// Keep modal open when clicking outside
+// Prevent closing the modal when clicking outside (if that's the desired behavior)
 window.onclick = function(event) {
     if (event.target === document.getElementById('noteModal')) {
         // Do nothing, to keep the modal open
     }
 }
 
-// Check if there are any notes on page load
+document.getElementById('noteContent').addEventListener('input', function() {
+    const content = document.getElementById('noteContent');
+    if (content.value.length > MAX_CHARACTERS) {
+        content.value = content.value.slice(0, MAX_CHARACTERS);
+        showCustomAlert('You have reached the maximum character limit of 1000.');
+    }
+});
+
+        // Check if there are any notes on page load
 document.addEventListener('DOMContentLoaded', function() {
     fetch('/noctyx/server/php/display-notes.php')
         .then(response => response.text())

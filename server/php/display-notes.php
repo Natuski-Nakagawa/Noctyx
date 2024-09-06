@@ -15,7 +15,9 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 while ($row = $result->fetch_assoc()) {
-    echo $row['id'] . '|' . $row['title'] . '|' . $row['content'] . '|' . $row['ndate'] . "\n";
+    $content = htmlspecialchars_decode($row['content'], ENT_QUOTES);
+    $content = str_replace(['&lt;br /&gt;', '&lt;br&gt;'], "\n", $content); // Replace HTML entities for <br> tags with new lines
+    echo $row['id'] . '|' . $row['title'] . '|' . $content . '|' . $row['ndate'] . "\n";
 }
 
 $stmt->close();
